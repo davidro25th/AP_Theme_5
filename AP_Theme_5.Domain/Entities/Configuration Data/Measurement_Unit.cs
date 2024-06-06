@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace AP_Theme_5.Domain.Entities.Configuration_Data
 {
+    /// <summary>
+    /// Unidades de medida de la variable
+    /// </summary>
     public enum Measurement_Unit
     {
         Kelvin,
