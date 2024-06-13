@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AP_Theme_5.Domain.Entities.HistoricData
+namespace AP_Theme_5.Domain.Entities.Utilities
 {
     /// <summary>
     /// Enumerado para los niveles de prioridad de la alarma

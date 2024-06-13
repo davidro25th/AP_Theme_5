@@ -1,4 +1,5 @@
 ﻿using AP_Theme_5.Domain.Entities.Configuration_Data;
+using AP_Theme_5.Domain.Entities.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -34,6 +35,11 @@ namespace AP_Theme_5.Domain.Entities.HistoricData
         /// </summary>
         public Variable AlarmVariable { get; set; }
         #endregion
+
+        public Alarm(double out_of_range )
+        {
+            OutOfRange = out_of_range;
+        }
 
     }
 }

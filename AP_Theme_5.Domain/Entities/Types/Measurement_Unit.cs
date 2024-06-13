@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AP_Theme_5.Domain.Entities.Configuration_Data
+namespace AP_Theme_5.Domain.Entities.Utilities
 {
     /// <summary>
     /// Unidades de medida de la variable

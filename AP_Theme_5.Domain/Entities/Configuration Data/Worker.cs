@@ -13,32 +13,26 @@ namespace AP_Theme_5.Domain.Entities.Configuration_Data
     {
 		public Worker(string id)
 		{
-			this.id = id;
+			Id = id;
 		}
-        #region Fields
-        protected string firstname;
-		protected string lastname;
-		protected string id;
-		protected string phone_number;
-        #endregion
 
         #region Properties
 		/// <summary>
 		/// Primer nombre del operario
 		/// </summary>
-        public string Firstname { get { return firstname; } }
+        public string Firstname { get; set; }
 		/// <summary>
 		/// Segundo nombre del operario
 		/// </summary>
-		public string Lastname { get { return lastname; } }
+		public string Lastname { get; set; }
 		/// <summary>
 		/// Identificacion del operario
 		/// </summary>
-		protected string Id { get { return Id; } }
+		public string Id { get; set; }
 		/// <summary>
 		/// Numero de telefono del operario
 		/// </summary>
-		public string PhoneNumber { get { return phone_number; } }
+		public string PhoneNumber { get; set; }
         #endregion
     }
 }

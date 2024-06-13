@@ -3,37 +3,34 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using AP_Theme_5.Domain.Entities.Utilities;
 
 namespace AP_Theme_5.Domain.Entities.Configuration_Data
 {
-	/// <summary>
-	/// Clase que representa la variable medida 
-	/// </summary>
+    /// <summary>
+    /// Clase que representa la variable medida 
+    /// </summary>
     public class Variable
     {
 		public Variable(string code)
 		{
-			this.code = code;
+			Code = code;
 		}
-		#region Fields 
-		protected string name;
-		protected string code;
-		protected Measurement_Unit measurement_Unit;
-        #endregion
+
 
         #region Properties
         /// <summary>
         /// Nombre de la variable
         /// </summary>
-        public string Name { get { return name; } }
+        public string Name { get; set; }
 		/// <summary>
 		/// Codigo asociado a la variable
 		/// </summary>
-		public string Code { get { return code; } }
+		public string Code { get; set; }
 		/// <summary>
 		/// Unidad de medida de la variable
 		/// </summary>
-        public Measurement_Unit Measurement_Units => measurement_Unit;
+        public Measurement_Unit Measurement_Units {  get; set; }
         #endregion
 
 
