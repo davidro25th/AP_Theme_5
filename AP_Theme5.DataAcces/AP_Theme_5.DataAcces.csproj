@@ -7,13 +7,18 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Abstract\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.31" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="6.0.31" />
     <PackageReference Include="SQLite" Version="3.13.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\AP_Theme_5.Domain\AP_Theme_5.Domain.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="FluentConfigurations\ConfigurationData\" />
+    <Folder Include="FluentConfigurations\Types\" />
   </ItemGroup>
 
 </Project>
