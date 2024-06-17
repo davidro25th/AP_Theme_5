@@ -1,5 +1,6 @@
 ﻿using AP_Theme_5.Domain.Common;
 using AP_Theme_5.Domain.Entities.Types;
+using AP_Theme_5.Domain.ValueObjects;
 
 namespace AP_Theme_5.Domain.Entities.HistoricData
 {

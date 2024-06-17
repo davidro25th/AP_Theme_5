@@ -1,9 +1,9 @@
-﻿using Microsoft.EntityFrameworkCore;
-using AP_Theme_5.Domain.Entities.Configuration_Data;
+﻿using AP_Theme_5.Domain.Entities.Configuration_Data;
 using AP_Theme_5.Domain.Entities.HistoricData;
 using AP_Theme_5.Domain.Entities.Types;
+using Microsoft.EntityFrameworkCore;
 
-namespace AP_Theme_5.DataAcces
+namespace AP_Theme_5.DataAcces.Context
 {
 
     public class AplicationContext : DbContext
@@ -12,7 +12,7 @@ namespace AP_Theme_5.DataAcces
         /// <summary>
         /// Tabla de Unidades de Medida
         /// </summary>       
-        public DbSet<MeasurementUnit> measurementUnits { get; set; }
+        public DbSet<MeasurementUnit> MeasurementUnits { get; set; }
         /// <summary>
         /// Tabla de Variables
         /// </summary>
@@ -30,7 +30,15 @@ namespace AP_Theme_5.DataAcces
         /// </summary>
         public DbSet<AuditEvent> AuditEvents { get; set; }
         #endregion
-        
+        #region Helpers
+        private static DbContextOptions GetOptions(string connectionString)
+        {
+            return SqliteDbContextOptionsBuilderExtensions.UseSqlite(
+                new DbContextOptionsBuilder(), connectionString).Options;
+        }
+        #endregion
+
+
         /// <summary>
         /// Constructor requerido por Entity Framework
         /// </summary>
@@ -43,9 +51,9 @@ namespace AP_Theme_5.DataAcces
         {
         }
 
-        public AplicationContext(DbContextOptions<AplicationContext> options):
-            base(options) 
-        { 
+        public AplicationContext(DbContextOptions<AplicationContext> options) :
+            base(options)
+        {
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -53,7 +61,7 @@ namespace AP_Theme_5.DataAcces
             base.OnConfiguring(optionsBuilder);
             optionsBuilder.UseSqlite();
         }
-        
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
