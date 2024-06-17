@@ -1,10 +1,5 @@
 ﻿using AP_Theme_5.Domain.Entities.Configuration_Data;
-using AP_Theme_5.Domain.Entities.Utilities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using AP_Theme_5.Domain.Entities.Types;
 
 namespace AP_Theme_5.Domain.Entities.HistoricData
 {
@@ -14,17 +9,6 @@ namespace AP_Theme_5.Domain.Entities.HistoricData
     public class Alarm
     {
         #region Properties
-        /// <summary>
-        /// Fecha de ocurrencia de la alarma
-        /// </summary>
-        public DateTime Incidencedate { get; set; }
-        /// <summary>
-        /// Fecha de recuperacion de la alarma
-        /// </summary>
-        public DateTime Recoverydate { get; set; }
-        /// <summary>
-        /// Nivel de prioridad de la alarma
-        /// </summary>
         public Priority Priority { get; set; }
         /// <summary>
         /// Valor fuera de rango
@@ -33,12 +17,20 @@ namespace AP_Theme_5.Domain.Entities.HistoricData
         /// <summary>
         /// Variable asociada a la alarma
         /// </summary>
-        public Variable AlarmVariable { get; set; }
+        public Variable? AlarmVariable { get; set; }
+        /// <summary>
+        /// Datos de configuracion de la Alarma
+        /// </summary>
+        public AlarmConfiguration AlarmConfiguration { get; set; }
         #endregion
 
-        public Alarm(double out_of_range )
+        /// <summary>
+        /// Constructor para la Clase Alarm
+        /// </summary>
+        public Alarm(double out_of_range, AlarmConfiguration alarmConfiguration)
         {
             OutOfRange = out_of_range;
+            AlarmConfiguration = alarmConfiguration;
         }
 
     }
