@@ -1,4 +1,6 @@
-﻿namespace AP_Theme_5.Domain.Entities.Types
+﻿using AP_Theme_5.Domain.Common;
+
+namespace AP_Theme_5.Domain.Entities.Types
 {
     /// <summary>
     /// Enumerado para los niveles de prioridad de la alarma

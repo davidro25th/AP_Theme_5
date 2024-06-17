@@ -1,4 +1,4 @@
-﻿using AP_Theme_5.Domain.Entities.Configuration_Data;
+﻿using AP_Theme_5.Domain.Common;
 using AP_Theme_5.Domain.Entities.Types;
 
 namespace AP_Theme_5.Domain.Entities.HistoricData
@@ -6,30 +6,32 @@ namespace AP_Theme_5.Domain.Entities.HistoricData
     /// <summary>
     /// Clase que representa la alarma del sistema
     /// </summary>
-    public class Alarm
+    public class Alarm : Entity
     {
         #region Properties
-        public Priority Priority { get; set; }
         /// <summary>
-        /// Valor fuera de rango
+        /// Fecha de ocurrencia de la alarma
         /// </summary>
-        public double OutOfRange { get; set; }
+        public DateTime IncidencenceDate { get; set; }
         /// <summary>
-        /// Variable asociada a la alarma
+        /// Fecha de recuperacion de la alarma
         /// </summary>
-        public Variable? AlarmVariable { get; set; }
+        public DateTime RecoveryDate { get; set; }
         /// <summary>
-        /// Datos de configuracion de la Alarma
+        /// Nivel de prioridad de la alarma
         /// </summary>
         public AlarmConfiguration AlarmConfiguration { get; set; }
         #endregion
 
         /// <summary>
+        /// Constructor Requerido por Entity Framework
+        /// </summary>
+        protected Alarm() { }
+        /// <summary>
         /// Constructor para la Clase Alarm
         /// </summary>
-        public Alarm(double out_of_range, AlarmConfiguration alarmConfiguration)
+        public Alarm(AlarmConfiguration alarmConfiguration)
         {
-            OutOfRange = out_of_range;
             AlarmConfiguration = alarmConfiguration;
         }
 

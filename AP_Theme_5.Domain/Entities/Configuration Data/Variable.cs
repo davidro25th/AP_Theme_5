@@ -1,11 +1,12 @@
-﻿using AP_Theme_5.Domain.Entities.Types;
+﻿using AP_Theme_5.Domain.Common;
+using AP_Theme_5.Domain.Entities.Types;
 
 namespace AP_Theme_5.Domain.Entities.Configuration_Data
 {
     /// <summary>
     /// Clase que representa la variable medida 
     /// </summary>
-    public class Variable
+    public class Variable : Entity
     {
         #region Properties
         /// <summary>
@@ -23,6 +24,15 @@ namespace AP_Theme_5.Domain.Entities.Configuration_Data
         #endregion
 
         /// <summary>
+        /// Referencia uno a muchos con MeasurementUnit
+        /// </summary>
+        public Guid MeasurementUnitId { get; set; }
+
+        /// <summary>
+        /// Constructor Requerido por Entity Framework
+        /// </summary>
+        protected Variable() { }
+        /// <summary>
         /// Constructor de la Clase Variable
         /// </summary>
         public Variable(string code)
@@ -31,3 +41,4 @@ namespace AP_Theme_5.Domain.Entities.Configuration_Data
         }
     }
 }
+
