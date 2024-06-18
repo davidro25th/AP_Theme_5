@@ -8,18 +8,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AP_Theme_5.DataAcces.FluentConfigurations.HistoricalData
+namespace AP_Theme_5.DataAcces.FluentConfigurations.Types
 {
-    internal class AuditEventEntityTypeConfiguration
+    internal class MeasurementUnitEntityTypeConfiguration
         : EntityTypeConfigurationBase<AuditEvent>
     {
         public override void Configure(EntityTypeBuilder<AuditEvent> builder)
         {
             builder.ToTable("AuditEvents");
             base.Configure(builder);
-            //TODO Finish AuditEvent Configuration
+            //TODO Finish MeasurementUnit
             //TODO Clean
-
         }
     }
 }

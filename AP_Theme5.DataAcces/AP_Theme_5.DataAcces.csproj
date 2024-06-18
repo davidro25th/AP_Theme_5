@@ -16,9 +16,4 @@
     <ProjectReference Include="..\AP_Theme_5.Domain\AP_Theme_5.Domain.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="FluentConfigurations\ConfigurationData\" />
-    <Folder Include="FluentConfigurations\Types\" />
-  </ItemGroup>
-
 </Project>

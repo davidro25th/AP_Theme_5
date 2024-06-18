@@ -1,5 +1,5 @@
 ﻿using AP_Theme_5.DataAcces.FluentConfigurations.Common;
-using AP_Theme_5.Domain.Entities.HistoricData;
+using AP_Theme_5.Domain.Entities.Configuration_Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using System;
@@ -8,16 +8,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AP_Theme_5.DataAcces.FluentConfigurations.Alarms
+namespace AP_Theme_5.DataAcces.FluentConfigurations.ConfigurationData
 {
-    public class AlarmEntityTypeConfiguration
-        : EntityTypeConfigurationBase<Alarm>
+    internal class VariableEntityTypeConfiguration
+        :EntityTypeConfigurationBase<Variable>
     {
-        public override void Configure(EntityTypeBuilder<Alarm> builder)
+        public override void Configure(EntityTypeBuilder<Variable> builder)
         {
             builder.ToTable("Alarms");
             base.Configure(builder);
-            //TODO Finish Alarm Configuration
+            //TODO Finish Worker Configuration
             //TODO Clean
         }
     }
