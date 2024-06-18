@@ -26,6 +26,7 @@ namespace AP_Theme_5.Domain.Entities.HistoricData
         /// Relacion uno a muchos entre AuditEvent y Worker
         /// </summary>
         public Worker Worker { get; set; }
+        public object WorkerId { get; set; }
         #endregion
 
         /// <summary>

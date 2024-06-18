@@ -15,7 +15,9 @@ namespace AP_Theme_5.DataAcces.FluentConfigurations.ConfigurationData
     {
         public override void Configure(EntityTypeBuilder<Variable> builder)
         {
-            builder.ToTable("Alarms");
+            builder.ToTable("Variables");
+            builder.HasOne(x => x.MeasurementUnit)
+                .WithMany().HasForeignKey(x => x.MeasurementUnitId);
             base.Configure(builder);
             //TODO Finish Worker Configuration
             //TODO Clean

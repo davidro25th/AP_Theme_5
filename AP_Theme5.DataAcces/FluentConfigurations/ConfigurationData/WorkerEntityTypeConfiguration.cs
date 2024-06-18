@@ -15,8 +15,18 @@ namespace AP_Theme_5.DataAcces.FluentConfigurations.ConfigurationData
     {
         public override void Configure(EntityTypeBuilder<Worker> builder)
         {
-            builder.ToTable("Alarms");
-            base.Configure(builder);
+            builder.ToTable("Workers");
+            builder.Property(x => x.IdentityCard).
+                /// Conversion de arreglo de enteros a Int
+                HasConversion(
+                c => String.Join("", c),
+                s => s.Select(i => Convert.ToInt32(i)).ToArray());
+                builder.Property(x => x.PhoneNumber).
+                HasConversion(
+                c => String.Join("", c),
+                s => s.Select(i => Convert.ToInt32(i)).ToArray());
+                base.Configure(builder);
+
             //TODO Finish Worker Configuration
             //TODO Clean
         }

@@ -16,6 +16,7 @@ namespace AP_Theme_5.DataAcces.FluentConfigurations.HistoricalData
         public override void Configure(EntityTypeBuilder<AuditEvent> builder)
         {
             builder.ToTable("AuditEvents");
+            builder.HasOne(x=> x.Worker).WithMany().HasForeignKey(x => x.WorkerId);
             base.Configure(builder);
             //TODO Finish AuditEvent Configuration
             //TODO Clean

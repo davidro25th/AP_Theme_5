@@ -15,7 +15,7 @@ namespace AP_Theme_5.DataAcces.FluentConfigurations.Types
     {
         public override void Configure(EntityTypeBuilder<AuditEvent> builder)
         {
-            builder.ToTable("AuditEvents");
+            builder.ToTable("MeasurementUnits");
             base.Configure(builder);
             //TODO Finish MeasurementUnit
             //TODO Clean

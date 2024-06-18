@@ -20,11 +20,11 @@ namespace AP_Theme_5.Domain.Entities.Configuration_Data
         /// <summary>
         /// Identificacion del operario
         /// </summary>
-        public short[] IdentityCard { get; set; }
+        public int[] IdentityCard { get; set; }
         /// <summary>
         /// Numero de telefono del operario
         /// </summary>
-        public short[]? PhoneNumber { get; set; }
+        public int[]? PhoneNumber { get; set; }
         #endregion
 
         /// <summary>
@@ -39,7 +39,7 @@ namespace AP_Theme_5.Domain.Entities.Configuration_Data
         /// <summary>
         /// Constructor de la clase Worker
         /// </summary>
-        public Worker(short[] identityCard)
+        public Worker(int[] identityCard)
         {
             IdentityCard = identityCard;
         }

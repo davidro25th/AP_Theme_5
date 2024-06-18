@@ -15,7 +15,8 @@ namespace AP_Theme_5.DataAcces.FluentConfigurations.Alarms
     {
         public override void Configure(EntityTypeBuilder<Alarm> builder)
         {
-            builder.ToTable("Alarms");
+            builder.ToTable("AlarmConfiguration");
+            builder.OwnsOne(x => x.AlarmConfiguration);
             base.Configure(builder);
             //TODO Finish Alarm Configuration
             //TODO Clean
