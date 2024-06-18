@@ -20,11 +20,11 @@ namespace AP_Theme_5.Domain.Entities.Configuration_Data
         /// <summary>
         /// Identificacion del operario
         /// </summary>
-        public int[] IdentityCard { get; set; }
+        public string IdentityCard { get; set; }
         /// <summary>
         /// Numero de telefono del operario
         /// </summary>
-        public int[]? PhoneNumber { get; set; }
+        public string? PhoneNumber { get; set; }
         #endregion
 
         /// <summary>
@@ -39,9 +39,27 @@ namespace AP_Theme_5.Domain.Entities.Configuration_Data
         /// <summary>
         /// Constructor de la clase Worker
         /// </summary>
-        public Worker(int[] identityCard)
+        private Worker(string identityCard)
         {
+
             IdentityCard = identityCard;
+        }
+        /// <summary>
+        /// Metodo estatico de fabrica para la validacion del carne de identidad
+        /// </summary>
+        /// <param name="identityCard"></param>
+        /// <returns></returns>
+        public static Worker Create(string identityCard)
+        {
+            if (identityCard.Length = !11)
+            {
+                return null;
+            }
+            if (!identityCard.All(char.IsDigit))
+            {
+                return null;
+            }
+            return new Worker(identityCard);
         }
     }
 

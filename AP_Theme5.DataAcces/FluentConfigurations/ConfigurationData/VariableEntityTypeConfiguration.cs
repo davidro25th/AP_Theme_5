@@ -12,8 +12,10 @@ namespace AP_Theme_5.DataAcces.FluentConfigurations.ConfigurationData
         {
             builder.ToTable("Variables");
             //Relacion entre variable y unidad de medida
-            builder.HasOne(x => x.MeasurementUnit)
-                .WithMany().HasForeignKey(x => x.MeasurementUnitId);
+            //builder.HasOne(x => x.MeasurementUnit)
+            //   .WithMany().HasForeignKey(x => x.MeasurementUnitId);
+            //Considerando MeasurementUnit Value Object
+            builder.OwnsOne( x => x.MeasurementUnit)
             base.Configure(builder);
 
         }

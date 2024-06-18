@@ -1,5 +1,5 @@
 ﻿using AP_Theme_5.Domain.Common;
-using AP_Theme_5.Domain.Entities.Types;
+using AP_Theme_5.Domain.ValueObjects;
 
 namespace AP_Theme_5.Domain.Entities.Configuration_Data
 {
@@ -25,8 +25,9 @@ namespace AP_Theme_5.Domain.Entities.Configuration_Data
 
         /// <summary>
         /// Referencia uno a muchos con MeasurementUnit
+        /// Por Ahora measurement unit es Value Object
         /// </summary>
-        public Guid MeasurementUnitId { get; set; }
+        //public Guid MeasurementUnitId { get; set; }
 
         /// <summary>
         /// Constructor Requerido por Entity Framework

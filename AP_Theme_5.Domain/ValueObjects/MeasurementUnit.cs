@@ -1,12 +1,11 @@
-﻿using AP_Theme_5.Domain.Common;
-using AP_Theme_5.Domain.Entities.Configuration_Data;
+﻿using AP_Theme_5.Domain.Entities.Common
 
-namespace AP_Theme_5.Domain.Entities.Types
+namespace AP_Theme_5.Domain.ValueObjects
 {
     /// <summary>
     /// Unidades de medida de la variable
     /// </summary>
-    public class MeasurementUnit : Entity
+    public class MeasurementUnit : ValueObject
     {
         #region Properties
         /// <summary>
@@ -20,8 +19,9 @@ namespace AP_Theme_5.Domain.Entities.Types
         #endregion
         /// <summary>
         /// Referencia uno a muchos con Variable
+        /// Por ahora considerandose Value object no necesita la referencia
         /// </summary>
-        public List<Variable> Variable { get; set; }
+        //public List<Variable> Variable { get; set; }
 
         /// <summary>
         /// Constructor Requerido por Entity Framework
@@ -34,6 +34,15 @@ namespace AP_Theme_5.Domain.Entities.Types
         public MeasurementUnit(string UnitName)
         {
             this.UnitName = UnitName;
+        }
+        /// <summary>
+        /// Implementacion de GetEqualityComponents en AlarmConfiguration
+        /// </summary>
+        /// <returns></returns>
+        protected override IEnumerable<object> GetEqualityComponents()
+        {
+            yield return UnitType; 
+            yield return UnitName;
         }
     }
 }
