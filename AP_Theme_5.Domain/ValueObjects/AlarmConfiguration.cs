@@ -1,5 +1,6 @@
-﻿using AP_Theme_5.Domain.Entities.Common;
+﻿using AP_Theme_5.Domain.Entities.Common
 using AP_Theme_5.Domain.Entities.Configuration_Data;
+using AP_Theme_5.Domain.Entities.Types;
 
 namespace AP_Theme_5.Domain.ValueObjects
 {
