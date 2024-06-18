@@ -2,11 +2,6 @@
 using AP_Theme_5.Domain.Entities.HistoricData;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AP_Theme_5.DataAcces.FluentConfigurations.Alarms
 {
@@ -16,10 +11,10 @@ namespace AP_Theme_5.DataAcces.FluentConfigurations.Alarms
         public override void Configure(EntityTypeBuilder<Alarm> builder)
         {
             builder.ToTable("AlarmConfiguration");
+            // Relacion entre Alarm y ALarmConfiguration (Value Object)
             builder.OwnsOne(x => x.AlarmConfiguration);
             base.Configure(builder);
-            //TODO Finish Alarm Configuration
-            //TODO Clean
+
         }
     }
 }
