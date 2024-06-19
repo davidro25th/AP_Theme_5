@@ -12,7 +12,7 @@ namespace AP_Theme_5.DataAcces.FluentConfigurations.HistoricalData
         {
             //Relacion entre AuditEvent y Worker
             builder.ToTable("AuditEvents");
-            builder.HasOne(x => x.Worker).WithMany().HasForeignKey(x => x.WorkerId);
+            //builder.HasOne(x => x.Worker).WithMany().HasForeignKey(x => x.WorkerId);
             base.Configure(builder);
 
 

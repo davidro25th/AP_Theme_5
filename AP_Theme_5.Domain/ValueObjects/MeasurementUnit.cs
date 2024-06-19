@@ -1,4 +1,4 @@
-﻿using AP_Theme_5.Domain.Entities.Common
+﻿using AP_Theme_5.Domain.Entities.Common;
 
 namespace AP_Theme_5.Domain.ValueObjects
 {

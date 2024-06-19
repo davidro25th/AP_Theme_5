@@ -51,7 +51,7 @@ namespace AP_Theme_5.Domain.Entities.Configuration_Data
         /// <returns></returns>
         public static Worker Create(string identityCard)
         {
-            if (identityCard.Length = !11)
+            if (identityCard.Length != 11)
             {
                 return null;
             }

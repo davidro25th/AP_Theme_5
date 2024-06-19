@@ -1,4 +1,7 @@
-﻿using AP_Theme_5.Domain.Entities.Configuration_Data;
+﻿using AP_Theme_5.DataAcces.FluentConfigurations.Alarms;
+using AP_Theme_5.DataAcces.FluentConfigurations.ConfigurationData;
+using AP_Theme_5.DataAcces.FluentConfigurations.HistoricalData;
+using AP_Theme_5.Domain.Entities.Configuration_Data;
 using AP_Theme_5.Domain.Entities.HistoricData;
 using AP_Theme_5.Domain.ValueObjects;
 using Microsoft.EntityFrameworkCore;
@@ -62,10 +65,33 @@ namespace AP_Theme_5.DataAcces.Context
             optionsBuilder.UseSqlite();
         }
 
+        
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
+
+            #region Base classes mapping
+
+            modelBuilder.Entity<Variable>().ToTable("Variables");
+
+            modelBuilder.Entity<Worker>().ToTable("Workers");
+
+            modelBuilder.Entity<Alarm>().ToTable("Alarms");
+
+            modelBuilder.Entity<AuditEvent>().ToTable("AuditEvent");
+
+            
+
+            #endregion
+
+            modelBuilder.ApplyConfiguration(new VariableEntityTypeConfiguration());
+            modelBuilder.ApplyConfiguration(new WorkerEntityTypeConfiguration());
+            modelBuilder.ApplyConfiguration(new AlarmEntityTypeConfiguration());
+            modelBuilder.ApplyConfiguration(new AuditEventEntityTypeConfiguration());
         }
+
+
 
     }
 }

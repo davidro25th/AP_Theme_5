@@ -40,7 +40,7 @@ namespace AP_Theme_5.Domain.Entities.HistoricData
         {
             Action = action;
             Worker = worker;
-            WorkerId = worker.Id;
+            //WorkerId = worker.Id;
         }
     }
 }

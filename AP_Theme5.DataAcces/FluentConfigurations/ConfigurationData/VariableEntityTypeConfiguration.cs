@@ -15,7 +15,7 @@ namespace AP_Theme_5.DataAcces.FluentConfigurations.ConfigurationData
             //builder.HasOne(x => x.MeasurementUnit)
             //   .WithMany().HasForeignKey(x => x.MeasurementUnitId);
             //Considerando MeasurementUnit Value Object
-            builder.OwnsOne( x => x.MeasurementUnit)
+            builder.OwnsOne(x => x.MeasurementUnit);
             base.Configure(builder);
 
         }
