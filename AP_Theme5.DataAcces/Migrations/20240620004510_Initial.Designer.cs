@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AP_Theme_5.DataAcces.Migrations
 {
     [DbContext(typeof(AplicationContext))]
-    [Migration("20240619210556_Initial")]
+    [Migration("20240620004510_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

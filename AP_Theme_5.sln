@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AP_Theme_5.Domain", "AP_The
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AP_Theme_5.DataAcces", "AP_Theme5.DataAcces\AP_Theme_5.DataAcces.csproj", "{A4FC878C-46D9-4B6D-BC4C-13B30CD86E20}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AP_Theme_5.CRUDapp", "AP_Theme_5.CRUDapp\AP_Theme_5.CRUDapp.csproj", "{1669B585-E7AE-429E-9B24-F34781CF2716}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{A4FC878C-46D9-4B6D-BC4C-13B30CD86E20}.Debug|Any CPU.Build.0 = Release|Any CPU
 		{A4FC878C-46D9-4B6D-BC4C-13B30CD86E20}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A4FC878C-46D9-4B6D-BC4C-13B30CD86E20}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1669B585-E7AE-429E-9B24-F34781CF2716}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1669B585-E7AE-429E-9B24-F34781CF2716}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1669B585-E7AE-429E-9B24-F34781CF2716}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1669B585-E7AE-429E-9B24-F34781CF2716}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

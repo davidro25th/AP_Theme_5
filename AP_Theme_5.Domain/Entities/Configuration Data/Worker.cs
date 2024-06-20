@@ -39,9 +39,9 @@ namespace AP_Theme_5.Domain.Entities.Configuration_Data
         /// <summary>
         /// Constructor de la clase Worker
         /// </summary>
-        private Worker(string identityCard)
+        private Worker(Guid ID, string identityCard)
         {
-
+            Id = ID;
             IdentityCard = identityCard;
         }
         /// <summary>
@@ -59,7 +59,7 @@ namespace AP_Theme_5.Domain.Entities.Configuration_Data
             {
                 return null;
             }
-            return new Worker(identityCard);
+            return new Worker(Guid.NewGuid(), identityCard);
         }
     }
 
