@@ -73,7 +73,7 @@ namespace AP_Theme_5.DataAcces.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("AlarmConfiguration", (string)null);
+                    b.ToTable("Alarms", (string)null);
                 });
 
             modelBuilder.Entity("AP_Theme_5.Domain.Entities.HistoricData.AuditEvent", b =>
@@ -144,7 +144,7 @@ namespace AP_Theme_5.DataAcces.Migrations
 
                             b1.HasIndex("AlarmVariableId");
 
-                            b1.ToTable("AlarmConfiguration");
+                            b1.ToTable("Alarms");
 
                             b1.WithOwner()
                                 .HasForeignKey("AlarmId");

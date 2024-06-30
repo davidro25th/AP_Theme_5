@@ -24,7 +24,7 @@ namespace AP_Theme_5.Domain.Entities.Configuration_Data
         /// <summary>
         /// Numero de telefono del operario
         /// </summary>
-        public string? PhoneNumber { get; set; }
+        public string? PhoneNumber { get; set; }//vqlidqr en el set
         #endregion
 
         /// <summary>

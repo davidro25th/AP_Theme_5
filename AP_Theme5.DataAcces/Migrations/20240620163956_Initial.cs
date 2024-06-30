@@ -38,7 +38,7 @@ namespace AP_Theme_5.DataAcces.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "AlarmConfiguration",
+                name: "Alarms",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "TEXT", nullable: false),
@@ -50,9 +50,9 @@ namespace AP_Theme_5.DataAcces.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_AlarmConfiguration", x => x.Id);
+                    table.PrimaryKey("PK_Alarms", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_AlarmConfiguration_Variables_AlarmConfiguration_AlarmVariableId",
+                        name: "FK_Alarms_Variables_AlarmConfiguration_AlarmVariableId",
                         column: x => x.AlarmConfiguration_AlarmVariableId,
                         principalTable: "Variables",
                         principalColumn: "Id",
@@ -99,8 +99,8 @@ namespace AP_Theme_5.DataAcces.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_AlarmConfiguration_AlarmConfiguration_AlarmVariableId",
-                table: "AlarmConfiguration",
+                name: "IX_Alarms_AlarmConfiguration_AlarmVariableId",
+                table: "Alarms",
                 column: "AlarmConfiguration_AlarmVariableId");
 
             migrationBuilder.CreateIndex(
@@ -112,7 +112,7 @@ namespace AP_Theme_5.DataAcces.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "AlarmConfiguration");
+                name: "Alarms");
 
             migrationBuilder.DropTable(
                 name: "AuditEvents");
