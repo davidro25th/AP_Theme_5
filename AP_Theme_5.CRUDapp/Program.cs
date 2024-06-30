@@ -11,7 +11,7 @@ internal class Program
 {
     static void Main(string[] args)
     {
-        AplicationContext appContext = new AplicationContext("Data Source = ProgramdB.sqlite");
+        ApplicationContext appContext = new ApplicationContext("Data Source = ProgramdB.sqlite");
         if (!appContext.Database.CanConnect())
         {
             appContext.Database.Migrate();
@@ -31,7 +31,7 @@ internal class Program
         appContext.SaveChanges();
         AlarmConfiguration AlarmaConfig1 = new AlarmConfiguration(45.03, CalderaTemp);
         Alarm Alarma1 = new Alarm(AlarmaConfig1);
-        appContext.Alarms.Add(Alarma1);
+        appContext.AuditEvents.Add(Alarma1);
         AuditEvent Auditoria1 = new AuditEvent("Para todo", Pepe);
         appContext.AuditEvents.Add(Auditoria1);
         Worker? WorkerFromAuditE = appContext.Set<Worker>().FirstOrDefault(v => v.Id == Auditoria1.WorkerId);

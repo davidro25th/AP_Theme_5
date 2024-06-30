@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore;
 namespace AP_Theme_5.DataAcces.Context
 {
 
-    public class AplicationContext : DbContext
+    public class ApplicationContext : DbContext
     {
         #region Tables
         /// <summary>
@@ -45,16 +45,16 @@ namespace AP_Theme_5.DataAcces.Context
         /// <summary>
         /// Constructor requerido por Entity Framework
         /// </summary>
-        public AplicationContext() { }
+        public ApplicationContext() { }
         /// <summary>
         /// Constructor de Aplication Context
         /// </summary>
-        public AplicationContext(string conectionString)
+        public ApplicationContext(string conectionString)
             : base(GetOptions(conectionString))
         {
         }
 
-        public AplicationContext(DbContextOptions<AplicationContext> options) :
+        public ApplicationContext(DbContextOptions<ApplicationContext> options) :
             base(options)
         {
         }

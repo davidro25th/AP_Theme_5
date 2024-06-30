@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
@@ -17,6 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\AP_Theme_5.Contracts\AP_Theme_5.Contracts.csproj" />
     <ProjectReference Include="..\AP_Theme_5.Domain\AP_Theme_5.Domain.csproj" />
   </ItemGroup>
 
