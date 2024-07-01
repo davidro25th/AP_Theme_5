@@ -5,6 +5,7 @@ using AP_Theme_5.DataAcces.Context;
 using AP_Theme_5.DataAcces.Repositories.ConfigurationData;
 using AP_Theme_5.DataAccess.Tests.Utilities;
 using AP_Theme_5.Domain.Entities.Configuration_Data;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -57,7 +58,7 @@ namespace AP_Theme_5.DataAccess.Tests
         public void Can_Get_Variable_By_Id(int position)
         {
             //Arrange
-            var variables = _variableRepository.GetAllVariables();
+            var variables = _variableRepository.GetAllVariables().ToList();
             Assert.IsNotNull(variables);
             Assert.IsTrue(position < variables.Count);
             Variable variableToGet = variables[position];

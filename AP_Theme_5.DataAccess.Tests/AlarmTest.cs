@@ -8,6 +8,7 @@ using AP_Theme_5.Domain.Entities.Configuration_Data;
 using AP_Theme_5.Domain.Entities.HistoricData;
 using AP_Theme_5.Domain.Entities.Types;
 using AP_Theme_5.Domain.ValueObjects;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -68,7 +69,7 @@ namespace AP_Theme_5.DataAccess.Tests
         public void Can_Get_Alarm_By_Id(int position)
         {
             //Arrange
-            var alarms = _alarmRepository.GetAllAlarms();
+            var alarms = _alarmRepository.GetAllAlarms().ToList();
             Assert.IsNotNull(alarms);
             Assert.IsTrue(position < alarms.Count);
             Alarm alarmToGet = alarms[position];

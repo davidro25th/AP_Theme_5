@@ -6,6 +6,7 @@ using AP_Theme_5.DataAcces.Repositories.HistoricalData;
 using AP_Theme_5.DataAccess.Tests.Utilities;
 using AP_Theme_5.Domain.Entities.Configuration_Data;
 using AP_Theme_5.Domain.Entities.HistoricData;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -60,7 +61,7 @@ namespace AP_Theme_5.DataAccess.Tests
         public void Can_Get_AuditEvent_By_Id(int position)
         {
             //Arrange
-            var auditEvents = _auditEventRepository.GetAllAuditEvents();
+            var auditEvents = _auditEventRepository.GetAllAuditEvents().ToList();
             Assert.IsNotNull(auditEvents);
             Assert.IsTrue(position < auditEvents.Count);
             AuditEvent auditEventToGet = auditEvents[position];
