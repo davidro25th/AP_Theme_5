@@ -9,7 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AP_Theme_5.DataAcces", "AP_
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AP_Theme_5.CRUDapp", "AP_Theme_5.CRUDapp\AP_Theme_5.CRUDapp.csproj", "{1669B585-E7AE-429E-9B24-F34781CF2716}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AP_Theme_5.Contracts", "AP_Theme_5.Contracts\AP_Theme_5.Contracts.csproj", "{17E93A27-1D07-4B82-A2CC-082282D7E21D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AP_Theme_5.Contracts", "AP_Theme_5.Contracts\AP_Theme_5.Contracts.csproj", "{17E93A27-1D07-4B82-A2CC-082282D7E21D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AP_Theme_5.DataAccess.Tests", "AP_Theme_5.DataAccess.Tests\AP_Theme_5.DataAccess.Tests.csproj", "{B5B1B2DD-F66A-48B1-AD6E-7771E7A62D9D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{17E93A27-1D07-4B82-A2CC-082282D7E21D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{17E93A27-1D07-4B82-A2CC-082282D7E21D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{17E93A27-1D07-4B82-A2CC-082282D7E21D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B5B1B2DD-F66A-48B1-AD6E-7771E7A62D9D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B5B1B2DD-F66A-48B1-AD6E-7771E7A62D9D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B5B1B2DD-F66A-48B1-AD6E-7771E7A62D9D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B5B1B2DD-F66A-48B1-AD6E-7771E7A62D9D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
