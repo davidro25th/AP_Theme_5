@@ -32,6 +32,7 @@ namespace AP_Theme_5.DataAcces.Repositories.HistoricalData
             return _context.Alarms.FirstOrDefault(x => x.Id == id);
         }
 
+
         public IEnumerable<Alarm> GetAllAlarms()
         {
             return _context.Alarms.ToList();

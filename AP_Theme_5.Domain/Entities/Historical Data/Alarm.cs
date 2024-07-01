@@ -27,7 +27,7 @@ namespace AP_Theme_5.Domain.Entities.HistoricData
         /// <summary>
         /// Constructor Requerido por Entity Framework
         /// </summary>
-        protected Alarm() { }
+        protected Alarm(AlarmConfiguration alarmConfiguration) { }
         /// <summary>
         /// Constructor para la Clase Alarm
         /// </summary>
