@@ -14,6 +14,7 @@ using System.Threading.Tasks;
 
 namespace AP_Theme_5.DataAccess.Tests
 {
+    [TestClass]
     public class WorkerTest
     {
         private IWorkerRepository _workerRepository;
