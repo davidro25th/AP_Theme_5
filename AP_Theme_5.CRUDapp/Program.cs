@@ -52,5 +52,11 @@ internal class Program
         _unitOfWork.SaveChanges();
         List<Worker> workers = (List<Worker>)_workerRepository.GetAllWorkers();
         Worker pepe2 = _workerRepository.GetWorkerById(pepe.Id);
+        MeasurementUnit MU1 = new MeasurementUnit("Celcius", "Temperatura");
+        _measurementUnitRepository.AddMeasurementUnit(MU1);
+        _unitOfWork.SaveChanges();
+        Variable Var1 = new Variable("Temperatura de MU","0001", MU1);
+        _variableRepository.AddVariable(Var1);
+        _unitOfWork.SaveChanges();
     }
 }

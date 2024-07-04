@@ -22,7 +22,8 @@ namespace AP_Theme_5.DataAcces.FluentConfigurations.ConfigurationData
             /// </summary>
             builder.HasOne(x => x.MeasurementUnit)
                 .WithMany()
-                .HasForeignKey(x => x.Id);
+                .HasForeignKey(x => x.MeasurementUnitId);
+            builder.Ignore(x => x.MeasurementUnit);
             base.Configure(builder);
 
         }

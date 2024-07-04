@@ -1,5 +1,6 @@
 ﻿using AP_Theme_5.Contracts;
 using AP_Theme_5.Contracts.ConfigurationData;
+using AP_Theme_5.Contracts.Types;
 using AP_Theme_5.DataAcces;
 using AP_Theme_5.DataAcces.Context;
 using AP_Theme_5.DataAcces.Repositories.ConfigurationData;
@@ -8,6 +9,7 @@ using AP_Theme_5.Domain.Entities.Configuration_Data;
 using AP_Theme_5.Domain.Types;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
+using AP_Theme_5.DataAcces.Repositories.Types;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,12 +22,14 @@ namespace AP_Theme_5.DataAccess.Tests
     {
         private IVariableRepository _variableRepository;
         private IUnitOfWork _unitOfWork;
+        private IMeasurementUnitRepository _measurementUnitRepository;
 
         public VariableTest()
         {
             ApplicationContext context = new ApplicationContext(
                 ConnectionStringProvider.GetConnectionString() );
             _variableRepository = new VariableRepository(context);
+            _measurementUnitRepository = new MeasurementUnitRepository(context);
             _unitOfWork = new UnitOfWork(context);
         }
 
@@ -40,16 +44,15 @@ namespace AP_Theme_5.DataAccess.Tests
         {
 
             //Arrange
-            Guid id = Guid.NewGuid();
-            //MeasurementUnit measurementUnit = new MeasurementUnit(unitName);
-           // measurementUnit.UnitType = unitType;
-            //Variable variable = new Variable(code);
-           // variable.Name = name;
-            //variable.MeasurementUnit = measurementUnit;
-            //TODO Add Remaining Variable properties(done)**
+            Guid id;
+            MeasurementUnit measurementUnit = new MeasurementUnit(unitName, unitType);            
+            Variable variable = new Variable(name, code, measurementUnit);
+            id = variable.Id;
+
 
             //Execute
-           // _variableRepository.AddVariable(variable);
+            _measurementUnitRepository.AddMeasurementUnit(measurementUnit);
+            _variableRepository.AddVariable(variable);
             _unitOfWork.SaveChanges();
 
             //Assert
@@ -75,7 +78,7 @@ namespace AP_Theme_5.DataAccess.Tests
             Assert.IsNotNull(loadedVariable);
 
         }
-
+        [TestMethod]
         public void Can_Not_Get_Variable_By_Invalid_Id()
         {
             //Arrange

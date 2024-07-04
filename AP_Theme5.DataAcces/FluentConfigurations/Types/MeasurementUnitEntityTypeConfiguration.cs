@@ -16,6 +16,7 @@ namespace AP_Theme_5.DataAcces.FluentConfigurations.Types
             /// Nombre de la tabla: "MeasurementUnits"
             /// </summary>
             builder.ToTable("MeasurementUnits");
+            builder.Ignore(x => x.Variable);
             /// <summary>
             /// Configuracion De la propiedad UnitName Como Requerida
             /// </summary>

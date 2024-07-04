@@ -17,6 +17,7 @@ namespace AP_Theme_5.DataAcces.FluentConfigurations.ConfigurationData
             /// Nombre de la tabla: "Workers"
             /// </summary>
             builder.ToTable("Workers");
+            builder.Ignore(x => x.AuditEvent);
             base.Configure(builder);
         }
     }

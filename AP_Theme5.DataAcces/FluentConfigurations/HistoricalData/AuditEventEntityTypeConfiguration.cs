@@ -23,6 +23,7 @@ namespace AP_Theme_5.DataAcces.FluentConfigurations.HistoricalData
             builder.HasOne(x => x.Worker)
                 .WithMany()
                 .HasForeignKey(x => x.Id);
+            builder.Ignore(x => x.Worker);
             base.Configure(builder);
 
 

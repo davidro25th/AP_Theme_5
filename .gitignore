@@ -361,3 +361,12 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+/AP_Theme5.DataAcces/Migrations/20240620163956_Initial.cs
+/AP_Theme5.DataAcces/Migrations/20240620163956_Initial.Designer.cs
+/AP_Theme5.DataAcces/Migrations/20240704164356_Initial.cs
+/AP_Theme5.DataAcces/Migrations/20240704164356_Initial.Designer.cs
+/AP_Theme5.DataAcces/Migrations/AplicationContextModelSnapshot.cs
+/AP_Theme5.DataAcces/Migrations/ApplicationContextModelSnapshot.cs
+/AP_Theme5.DataAcces/Migrations/20240620163956_Initial.cs
+/AP_Theme5.DataAcces/Migrations/20240620163956_Initial.Designer.cs
+/AP_Theme5.DataAcces/Migrations/AplicationContextModelSnapshot.cs

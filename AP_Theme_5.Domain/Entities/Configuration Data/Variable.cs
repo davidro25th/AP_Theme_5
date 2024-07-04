@@ -36,9 +36,10 @@ namespace AP_Theme_5.Domain.Entities.Configuration_Data
         /// </summary>
         public Variable(string? name, string code, MeasurementUnit? measurementUnit)
         {
-            name = Name;
+            Name = name;
             Code = code;
             MeasurementUnit = measurementUnit;
+            MeasurementUnitId = measurementUnit.Id;
         }
     }
 }
