@@ -29,12 +29,11 @@ namespace AP_Theme_5.DataAccess.Tests
             _unitOfWork = new UnitOfWork(context);
         }
 
-        [DataRow("Accionamiento de la Valvula de Control 2", 25/2/2024, "01062512345", "+53238456", "Pedro", "Pedro Pedro")]
-        [DataRow("Paro de Emergencia del Sistema", 25/3/2024, "01062512346", "+53238423", "Pedro", "Pedro Pedro")]
+        [DataRow("Accionamiento de la Valvula de Control 2", "01062512345", "+53238456", "Pedro", "Pedro Pedro")]
+        [DataRow("Paro de Emergencia del Sistema", "01062512346", "+53238423", "Pedro", "Pedro Pedro")]
         [TestMethod]
         public void Can_Add_AuditEvent(
-            string action,
-            DateTime ocurrence,
+            string action,            
             string identityCard,
             string phone_number,
             string firstname,
@@ -42,23 +41,19 @@ namespace AP_Theme_5.DataAccess.Tests
 
         {
 
-            //Arrange
-            Guid id = Guid.NewGuid();
+            //Arrange            
             Worker worker = Worker.Create(identityCard);
             worker.SetPhoneNumber(phone_number);
             worker.Firstname = firstname;
             worker.Lastname = lastname;
-            AuditEvent auditEvent = new AuditEvent( action, worker  );
-            //auditEvent.Ocurrence = ocurrence;
-
-            //TODO Add Remaining AuditEvent properties(done)**
+            AuditEvent auditEvent = new AuditEvent( action, worker  );       
 
             //Execute
             _auditEventRepository.AddAuditEvent(auditEvent);
             _unitOfWork.SaveChanges();
 
             //Assert
-            AuditEvent? loadedAuditEvent = _auditEventRepository.GetAuditEventById(id);
+            AuditEvent? loadedAuditEvent = _auditEventRepository.GetAuditEventById(auditEvent.Id);
             Assert.IsNotNull(loadedAuditEvent);
         }
 
@@ -90,6 +85,47 @@ namespace AP_Theme_5.DataAccess.Tests
 
             //Assert
             Assert.IsNull(loadedAuditEvent);
+        }
+        [DataRow(0)]
+        [TestMethod]
+        public void Can_Delete_AuditEvent(int position)
+        {
+            //Arrange
+            var AuditEvents = _auditEventRepository.GetAllAuditEvents();
+            Assert.IsNotNull(AuditEvents);
+            var count = AuditEvents.Count();
+            var auditEvent = AuditEvents.ElementAt(position);
+            Assert.IsNotNull(auditEvent);
+
+            //Execute
+            _auditEventRepository.DeleteAuditEvent(auditEvent);
+            _unitOfWork.SaveChanges();
+
+            //Assert
+            AuditEvents = _auditEventRepository.GetAllAuditEvents();
+            Assert.AreEqual(count - 1, AuditEvents.Count());
+            var DeletedauditEvent = _auditEventRepository.GetAuditEventById(auditEvent.Id);
+            Assert.IsNull(DeletedauditEvent);
+        }
+        [DataRow(0, "Arranque")]
+        [TestMethod]
+        public void Can_Update_AuditEvent(int position, string action)
+        {
+            //Arrange
+            var AuditEvents = _auditEventRepository.GetAllAuditEvents();
+            Assert.IsNotNull(AuditEvents);
+            var auditEvent = AuditEvents.ElementAt(position);
+            Assert.IsNotNull(auditEvent);
+
+            //Execute
+            auditEvent.Action = action;
+            _auditEventRepository.UpdateAuditEvent(auditEvent);
+            _unitOfWork.SaveChanges();
+
+            //Assert
+            var updatedAuditEvent = _auditEventRepository.GetAuditEventById(auditEvent.Id);
+            Assert.IsNotNull(updatedAuditEvent);
+            Assert.AreEqual(updatedAuditEvent.Action, auditEvent.Action);
         }
     }
 }

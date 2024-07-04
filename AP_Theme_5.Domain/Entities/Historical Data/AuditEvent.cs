@@ -43,5 +43,6 @@ namespace AP_Theme_5.Domain.Entities.HistoricData
             Worker = worker;
             Ocurrence = DateTime.Now;
         }
+
     }
 }

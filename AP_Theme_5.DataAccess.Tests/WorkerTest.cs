@@ -44,9 +44,7 @@ namespace AP_Theme_5.DataAccess.Tests
             id = worker.Id;
             worker.SetPhoneNumber(phone_number);
             worker.Firstname = firstname;
-            worker.Lastname = lastname;
-
-            //TODO Add Remaining Worker properties(done)**
+            worker.Lastname = lastname;            
 
             //Execute
             _workerRepository.AddWorker(worker);
@@ -75,7 +73,7 @@ namespace AP_Theme_5.DataAccess.Tests
             Assert.IsNotNull(loadedWorker);
 
         }
-
+        [TestMethod]
         public void Can_Not_Get_Worker_By_Invalid_Id()
         {
             //Arrange
@@ -85,6 +83,47 @@ namespace AP_Theme_5.DataAccess.Tests
 
             //Assert
             Assert.IsNull(loadedWorker);
+        }
+        [DataRow(0)]
+        [TestMethod]
+        public void Can_Delete_Worker(int position)
+        {
+            //Arrange
+            var Workers = _workerRepository.GetAllWorkers();
+            Assert.IsNotNull(Workers);
+            var count = Workers.Count();
+            var worker = Workers.ElementAt(position);
+            Assert.IsNotNull(worker);
+
+            //Execute
+            _workerRepository.DeleteWorker(worker);
+            _unitOfWork.SaveChanges();
+
+            //Assert
+            Workers = _workerRepository.GetAllWorkers();
+            Assert.AreEqual(count - 1, Workers.Count());
+            var DeletedWorker = _workerRepository.GetWorkerById(worker.Id);
+            Assert.IsNull(DeletedWorker);
+        }
+        [DataRow(0,"Albertico")]
+        [TestMethod]
+        public void Can_Update_Worker(int position, string firstname)
+        {
+            //Arrange
+            var Workers = _workerRepository.GetAllWorkers();
+            Assert.IsNotNull(Workers);
+            var worker = Workers.ElementAt(position);
+            Assert.IsNotNull(worker);
+
+            //Execute
+            worker.Firstname = firstname;
+            _workerRepository.UpdateWorker(worker);
+            _unitOfWork.SaveChanges();
+
+            //Assert
+            var updatedWorker = _workerRepository.GetWorkerById(worker.Id);
+            Assert.IsNotNull(updatedWorker);
+            Assert.AreEqual(updatedWorker.Firstname, worker.Firstname);
         }
     }
 }

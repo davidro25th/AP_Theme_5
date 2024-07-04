@@ -43,11 +43,9 @@ namespace AP_Theme_5.DataAccess.Tests
             string unitName)
         {
 
-            //Arrange
-            Guid id;
+            //Arrange            
             MeasurementUnit measurementUnit = new MeasurementUnit(unitName, unitType);            
-            Variable variable = new Variable(name, code, measurementUnit);
-            id = variable.Id;
+            Variable variable = new Variable(name, code, measurementUnit);          
 
 
             //Execute
@@ -56,7 +54,7 @@ namespace AP_Theme_5.DataAccess.Tests
             _unitOfWork.SaveChanges();
 
             //Assert
-            Variable? loadedVariable = _variableRepository.GetVariableById(id);
+            Variable? loadedVariable = _variableRepository.GetVariableById(variable.Id);
             Assert.IsNotNull(loadedVariable);
         }
 
@@ -88,6 +86,47 @@ namespace AP_Theme_5.DataAccess.Tests
 
             //Assert
             Assert.IsNull(loadedVariable);
+        }
+        [DataRow(0)]
+        [TestMethod]
+        public void Can_Delete_Variable (int position)
+        {
+            //Arrange
+            var Variables = _variableRepository.GetAllVariables();
+            Assert.IsNotNull(Variables);
+            var count = Variables.Count();
+            var variable = Variables.ElementAt(position);
+            Assert.IsNotNull(variable);
+
+            //Execute
+            _variableRepository.DeleteVariable(variable);
+            _unitOfWork.SaveChanges();
+
+            //Assert
+            Variables = _variableRepository.GetAllVariables();
+            Assert.AreEqual(count - 1, Variables.Count());
+            var DeletedWorker = _variableRepository.GetVariableById(variable.Id);
+            Assert.IsNull(DeletedWorker);
+        }
+        [DataRow(0, "Caldera")]
+        [TestMethod]
+        public void Can_Update_Variable(int position, string name)
+        {
+            //Arrange
+            var Variables = _variableRepository.GetAllVariables();
+            Assert.IsNotNull(Variables);
+            var variable = Variables.ElementAt(position);
+            Assert.IsNotNull(variable);
+
+            //Execute
+            variable.Name = name;
+            _variableRepository.UpdateVariable(variable);
+            _unitOfWork.SaveChanges();
+
+            //Assert
+            var updatedVariable = _variableRepository.GetVariableById(variable.Id);
+            Assert.IsNotNull(updatedVariable);
+            Assert.AreEqual(updatedVariable.Name, variable.Name);
         }
 
     }

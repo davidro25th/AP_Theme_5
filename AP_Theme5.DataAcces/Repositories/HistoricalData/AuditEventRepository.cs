@@ -35,7 +35,7 @@ namespace AP_Theme_5.DataAcces.Repositories.HistoricalData
             return _context.AuditEvents.FirstOrDefault(x => x.Id == id);
         }
         
-        public void UpdateAlarm(AuditEvent auditEvent)
+        public void UpdateAuditEvent(AuditEvent auditEvent)
         {
             _context.AuditEvents.Update(auditEvent);
         }

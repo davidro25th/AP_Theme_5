@@ -39,9 +39,7 @@ namespace AP_Theme_5.DataAccess.Tests
         [TestMethod]
         public void Can_Add_Alarm(
             double out_of_range,
-            Priority Priority,
-            //DateTime incidenceDate,
-            //DateTime recoveryDate,
+            Priority Priority,            
             string name,
             string code,
             string unitType)
@@ -56,7 +54,7 @@ namespace AP_Theme_5.DataAccess.Tests
             alarm.AlarmConfiguration.Priority = Priority;
             alarm.AlarmConfiguration.AlarmVariable.Id = Guid.NewGuid();
             alarm.Recovery();
-            //TODO Add Remaining Alarm properties(done)**
+           
 
             //Execute
             _alarmRepository.AddAlarm(alarm);
@@ -95,6 +93,47 @@ namespace AP_Theme_5.DataAccess.Tests
 
             //Assert
             Assert.IsNull(loadedAlarm);
+        }
+        [DataRow(0)]
+        [TestMethod]
+        public void Can_Delete_Alarm(int position)
+        {
+            //Arrange
+            var Alarms = _alarmRepository.GetAllAlarms();
+            Assert.IsNotNull(Alarms);
+            var count = Alarms.Count();
+            var alarm = Alarms.ElementAt(position);
+            Assert.IsNotNull(alarm);
+
+            //Execute
+            _alarmRepository.DeleteAlarm(alarm);
+            _unitOfWork.SaveChanges();
+
+            //Assert
+            Alarms = _alarmRepository.GetAllAlarms();
+            Assert.AreEqual(count - 1, Alarms.Count());
+            var Deletedalarm = _alarmRepository.GetAlarmById(alarm.Id);
+            Assert.IsNull(Deletedalarm);
+        }
+        [DataRow(0)]
+        [TestMethod]
+        public void Can_Update_Alarm(int position)
+        {
+            //Arrange
+            var Alarms = _alarmRepository.GetAllAlarms();
+            Assert.IsNotNull(Alarms);
+            var alarm = Alarms.ElementAt(position);
+            Assert.IsNotNull(alarm);
+
+            //Execute
+            alarm.Recovery();
+            _alarmRepository.UpdateAlarm(alarm);
+            _unitOfWork.SaveChanges();
+
+            //Assert
+            var updatedAlarm = _alarmRepository.GetAlarmById(alarm.Id);
+            Assert.IsNotNull(updatedAlarm);
+            Assert.AreEqual(updatedAlarm.RecoveryDate, alarm.RecoveryDate);
         }
     }
 }

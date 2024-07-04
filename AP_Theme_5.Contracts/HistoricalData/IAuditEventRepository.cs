@@ -23,7 +23,7 @@ namespace AP_Theme_5.Contracts.HistoricalData
         /// <summary>
         /// Actualiza una AuditEvent en el soporte de datos
         /// </summary>
-        void UpdateAlarm(AuditEvent variable);
+        void UpdateAuditEvent(AuditEvent variable);
         /// <summary>
         /// Elimina una AuditEvent del soporte de datos
         /// </summary>
