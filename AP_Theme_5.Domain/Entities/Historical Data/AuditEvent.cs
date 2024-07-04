@@ -10,8 +10,6 @@ namespace AP_Theme_5.Domain.Entities.HistoricData
     {
 
         #region Properties
-
-        public Guid Id { get; set; }
         /// <summary>
         /// Accion que se va a realizar en el evento de auditoria
         /// </summary>

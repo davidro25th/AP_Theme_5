@@ -9,7 +9,6 @@ namespace AP_Theme_5.Domain.Entities.HistoricData
     public class Alarm : Entity
     {
         #region Properties
-        public Guid Id { get; set; }
         /// <summary>
         /// Fecha de ocurrencia de la alarma
         /// </summary>

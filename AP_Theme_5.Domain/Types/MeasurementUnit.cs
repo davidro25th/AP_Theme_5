@@ -8,8 +8,7 @@ namespace AP_Theme_5.Domain.Types
     /// </summary>
     public class MeasurementUnit : Entity
     {
-        #region Properties
-        public Guid Id { get; set; }   
+        #region Properties 
         /// <summary>
         /// Tipo de Unidad de Medida (Temperatura, Presion, etc.)
         /// </summary>

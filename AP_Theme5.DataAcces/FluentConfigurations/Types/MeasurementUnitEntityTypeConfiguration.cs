@@ -8,7 +8,8 @@ namespace AP_Theme_5.DataAcces.FluentConfigurations.Types
     /// <summary>
     /// Configuracion de la tabla MeasurementUnits
     /// </summary>
-    internal class MeasurementUnitEntityTypeConfiguration : EntityTypeConfigurationBase<MeasurementUnit>
+    public class MeasurementUnitEntityTypeConfiguration :
+        EntityTypeConfigurationBase<MeasurementUnit>
     {
         public override void Configure(EntityTypeBuilder<MeasurementUnit> builder)
         {
