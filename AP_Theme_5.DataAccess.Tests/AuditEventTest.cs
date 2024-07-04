@@ -29,12 +29,11 @@ namespace AP_Theme_5.DataAccess.Tests
             _unitOfWork = new UnitOfWork(context);
         }
 
-        [DataRow("Accionamiento de la Valvula de Control 2", 25/2/2024, "01062512345", "+53238456", "Pedro", "Pedro Pedro")]
-        [DataRow("Paro de Emergencia del Sistema", 25/3/2024, "01062512346", "+53238423", "Pedro", "Pedro Pedro")]
+        [DataRow("Accionamiento de la Valvula de Control 2",  "01062512345", "+53238456", "Pedro", "Pedro Pedro")]
+        [DataRow("Paro de Emergencia del Sistema", "01062512346", "+53238423", "Pedro", "Pedro Pedro")]
         [TestMethod]
         public void Can_Add_AuditEvent(
             string action,
-            DateTime ocurrence,
             string identityCard,
             string phone_number,
             string firstname,
@@ -49,7 +48,7 @@ namespace AP_Theme_5.DataAccess.Tests
             worker.Firstname = firstname;
             worker.Lastname = lastname;
             AuditEvent auditEvent = new AuditEvent( action, worker  );
-            //auditEvent.Ocurrence = ocurrence;
+            //auditEvent.Recove = DateTime.Now();
 
             //TODO Add Remaining AuditEvent properties(done)**
 

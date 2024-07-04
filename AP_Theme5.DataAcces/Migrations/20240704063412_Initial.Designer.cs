@@ -3,6 +3,7 @@ using System;
 using AP_Theme_5.DataAcces.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AP_Theme_5.DataAcces.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    partial class AplicationContextModelSnapshot : ModelSnapshot
+    [Migration("20240704063412_Initial")]
+    partial class Initial
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "6.0.31");
@@ -20,11 +22,13 @@ namespace AP_Theme_5.DataAcces.Migrations
             modelBuilder.Entity("AP_Theme_5.Domain.Entities.Configuration_Data.Variable", b =>
                 {
                     b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Code")
                         .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<Guid>("MeasurementUnitId")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Name")
@@ -79,7 +83,6 @@ namespace AP_Theme_5.DataAcces.Migrations
             modelBuilder.Entity("AP_Theme_5.Domain.Entities.HistoricData.AuditEvent", b =>
                 {
                     b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Action")
@@ -99,27 +102,30 @@ namespace AP_Theme_5.DataAcces.Migrations
                     b.ToTable("AuditEvents", (string)null);
                 });
 
+            modelBuilder.Entity("AP_Theme_5.Domain.Types.MeasurementUnit", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("UnitName")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("UnitType")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("MeasurementUnits", (string)null);
+                });
+
             modelBuilder.Entity("AP_Theme_5.Domain.Entities.Configuration_Data.Variable", b =>
                 {
-                    b.OwnsOne("AP_Theme_5.Domain.ValueObjects.MeasurementUnit", "MeasurementUnit", b1 =>
-                        {
-                            b1.Property<Guid>("VariableId")
-                                .HasColumnType("TEXT");
-
-                            b1.Property<string>("UnitName")
-                                .IsRequired()
-                                .HasColumnType("TEXT");
-
-                            b1.Property<string>("UnitType")
-                                .HasColumnType("TEXT");
-
-                            b1.HasKey("VariableId");
-
-                            b1.ToTable("MeasurementUnits");
-
-                            b1.WithOwner()
-                                .HasForeignKey("VariableId");
-                        });
+                    b.HasOne("AP_Theme_5.Domain.Types.MeasurementUnit", "MeasurementUnit")
+                        .WithMany()
+                        .HasForeignKey("Id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("MeasurementUnit");
                 });
@@ -165,6 +171,12 @@ namespace AP_Theme_5.DataAcces.Migrations
             modelBuilder.Entity("AP_Theme_5.Domain.Entities.HistoricData.AuditEvent", b =>
                 {
                     b.HasOne("AP_Theme_5.Domain.Entities.Configuration_Data.Worker", "Worker")
+                        .WithMany()
+                        .HasForeignKey("Id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("AP_Theme_5.Domain.Entities.Configuration_Data.Worker", null)
                         .WithMany("AuditEvent")
                         .HasForeignKey("WorkerId")
                         .OnDelete(DeleteBehavior.Cascade)

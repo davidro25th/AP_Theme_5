@@ -17,7 +17,7 @@ namespace AP_Theme_5.Contracts.Types
         /// </summary>
         /// <param name="measurementUnitId"></param>
         /// <returns></returns>
-        MeasurementUnit? GetMeasurementUnitById(Guid measurementUnitId);
+        MeasurementUnit? GetMeasurementUnitById(Guid id);
         /// <summary>
         /// Obtiene Todas las unidades de medida de la base de datos
         /// </summary>

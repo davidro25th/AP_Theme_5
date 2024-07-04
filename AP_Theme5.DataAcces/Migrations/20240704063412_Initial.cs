@@ -10,16 +10,16 @@ namespace AP_Theme_5.DataAcces.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Variables",
+                name: "MeasurementUnits",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "TEXT", nullable: false),
-                    Name = table.Column<string>(type: "TEXT", nullable: true),
-                    Code = table.Column<string>(type: "TEXT", nullable: false)
+                    UnitType = table.Column<string>(type: "TEXT", nullable: true),
+                    UnitName = table.Column<string>(type: "TEXT", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Variables", x => x.Id);
+                    table.PrimaryKey("PK_MeasurementUnits", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -35,6 +35,52 @@ namespace AP_Theme_5.DataAcces.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Workers", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Variables",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "TEXT", nullable: false),
+                    Name = table.Column<string>(type: "TEXT", nullable: true),
+                    Code = table.Column<string>(type: "TEXT", nullable: false),
+                    MeasurementUnitId = table.Column<Guid>(type: "TEXT", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Variables", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Variables_MeasurementUnits_Id",
+                        column: x => x.Id,
+                        principalTable: "MeasurementUnits",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "AuditEvents",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "TEXT", nullable: false),
+                    Action = table.Column<string>(type: "TEXT", nullable: false),
+                    Ocurrence = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    WorkerId = table.Column<Guid>(type: "TEXT", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_AuditEvents", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_AuditEvents_Workers_Id",
+                        column: x => x.Id,
+                        principalTable: "Workers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_AuditEvents_Workers_WorkerId",
+                        column: x => x.WorkerId,
+                        principalTable: "Workers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -59,45 +105,6 @@ namespace AP_Theme_5.DataAcces.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
-            migrationBuilder.CreateTable(
-                name: "MeasurementUnits",
-                columns: table => new
-                {
-                    VariableId = table.Column<Guid>(type: "TEXT", nullable: false),
-                    UnitType = table.Column<string>(type: "TEXT", nullable: true),
-                    UnitName = table.Column<string>(type: "TEXT", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_MeasurementUnits", x => x.VariableId);
-                    table.ForeignKey(
-                        name: "FK_MeasurementUnits_Variables_VariableId",
-                        column: x => x.VariableId,
-                        principalTable: "Variables",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "AuditEvents",
-                columns: table => new
-                {
-                    Id = table.Column<Guid>(type: "TEXT", nullable: false),
-                    Action = table.Column<string>(type: "TEXT", nullable: false),
-                    Ocurrence = table.Column<DateTime>(type: "TEXT", nullable: false),
-                    WorkerId = table.Column<Guid>(type: "TEXT", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_AuditEvents", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_AuditEvents_Workers_WorkerId",
-                        column: x => x.WorkerId,
-                        principalTable: "Workers",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
             migrationBuilder.CreateIndex(
                 name: "IX_Alarms_AlarmConfiguration_AlarmVariableId",
                 table: "Alarms",
@@ -118,13 +125,13 @@ namespace AP_Theme_5.DataAcces.Migrations
                 name: "AuditEvents");
 
             migrationBuilder.DropTable(
-                name: "MeasurementUnits");
+                name: "Variables");
 
             migrationBuilder.DropTable(
                 name: "Workers");
 
             migrationBuilder.DropTable(
-                name: "Variables");
+                name: "MeasurementUnits");
         }
     }
 }

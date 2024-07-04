@@ -40,7 +40,10 @@ namespace AP_Theme_5.DataAccess.Tests
         {
 
             //Arrange
-            Guid id = Guid.NewGuid();
+            Guid id = new Guid();
+            Variable variable = new Variable( name, code, new MeasurementUnit(unitType, unitName) );
+            variable.Id = id;
+            
             //MeasurementUnit measurementUnit = new MeasurementUnit(unitName);
            // measurementUnit.UnitType = unitType;
             //Variable variable = new Variable(code);
@@ -49,7 +52,7 @@ namespace AP_Theme_5.DataAccess.Tests
             //TODO Add Remaining Variable properties(done)**
 
             //Execute
-           // _variableRepository.AddVariable(variable);
+            _variableRepository.AddVariable(variable);
             _unitOfWork.SaveChanges();
 
             //Assert

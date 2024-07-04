@@ -9,6 +9,7 @@ namespace AP_Theme_5.Domain.Types
     public class MeasurementUnit : Entity
     {
         #region Properties
+        public Guid Id { get; set; }   
         /// <summary>
         /// Tipo de Unidad de Medida (Temperatura, Presion, etc.)
         /// </summary>
@@ -21,7 +22,7 @@ namespace AP_Theme_5.Domain.Types
         /// <summary>
         /// Referencia uno a muchos con Variable
         /// </summary>
-        public List<Variable>? Variable { get; set; }
+        //public List<Variable>? Variable { get; set; }
 
         /// <summary>
         /// Constructor Requerido por Entity Framework

@@ -23,19 +23,7 @@ namespace AP_Theme_5.DataAcces.Repositories.Types
         /// <param name="measurementUnit"></param>
         public void AddMeasurementUnit(MeasurementUnit measurementUnit)
         {
-            bool exist = false;
-            List<MeasurementUnit> units = _context.MeasurementUnits.ToList();
-            foreach (MeasurementUnit unit in units)
-            {
-                if (unit.UnitName == measurementUnit.UnitName) 
-                {
-                    exist = true;
-                }
-            }
-            if (!exist)
-            {
-                _context.MeasurementUnits.Add(measurementUnit);
-            }
+           _context.MeasurementUnits.Add(measurementUnit);
         }
 
         public void DeleteMeasurementUnit(MeasurementUnit measurementUnit)
