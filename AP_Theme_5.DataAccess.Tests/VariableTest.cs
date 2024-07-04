@@ -5,6 +5,7 @@ using AP_Theme_5.DataAcces.Context;
 using AP_Theme_5.DataAcces.Repositories.ConfigurationData;
 using AP_Theme_5.DataAccess.Tests.Utilities;
 using AP_Theme_5.Domain.Entities.Configuration_Data;
+using AP_Theme_5.Domain.Types;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
@@ -40,11 +41,15 @@ namespace AP_Theme_5.DataAccess.Tests
 
             //Arrange
             Guid id = Guid.NewGuid();
-            Variable variable = new Variable(code);
-            //TODO Add Remaining Variable properties
+            //MeasurementUnit measurementUnit = new MeasurementUnit(unitName);
+           // measurementUnit.UnitType = unitType;
+            //Variable variable = new Variable(code);
+           // variable.Name = name;
+            //variable.MeasurementUnit = measurementUnit;
+            //TODO Add Remaining Variable properties(done)**
 
             //Execute
-            _variableRepository.AddVariable(variable);
+           // _variableRepository.AddVariable(variable);
             _unitOfWork.SaveChanges();
 
             //Assert

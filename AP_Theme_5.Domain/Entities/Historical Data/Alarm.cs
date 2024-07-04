@@ -1,5 +1,4 @@
 ﻿using AP_Theme_5.Domain.Common;
-using AP_Theme_5.Domain.Entities.Types;
 using AP_Theme_5.Domain.ValueObjects;
 
 namespace AP_Theme_5.Domain.Entities.HistoricData
@@ -13,11 +12,11 @@ namespace AP_Theme_5.Domain.Entities.HistoricData
         /// <summary>
         /// Fecha de ocurrencia de la alarma
         /// </summary>
-        public DateTime IncidencenceDate { get; set; }
+        public DateTime IncidencenceDate { get; private set; }
         /// <summary>
         /// Fecha de recuperacion de la alarma
         /// </summary>
-        public DateTime RecoveryDate { get; set; }
+        public DateTime RecoveryDate { get; private set; }
         /// <summary>
         /// Nivel de prioridad de la alarma
         /// </summary>
@@ -27,13 +26,21 @@ namespace AP_Theme_5.Domain.Entities.HistoricData
         /// <summary>
         /// Constructor Requerido por Entity Framework
         /// </summary>
-        protected Alarm(AlarmConfiguration alarmConfiguration) { }
+        protected Alarm() { }
         /// <summary>
         /// Constructor para la Clase Alarm
         /// </summary>
         public Alarm(AlarmConfiguration alarmConfiguration)
         {
             AlarmConfiguration = alarmConfiguration;
+            IncidencenceDate = DateTime.Now;
+        }
+        /// <summary>
+        /// Metodo para establecer la fecha de Recuperacion de la Alarma
+        /// </summary>
+        public void Recovery()
+        {
+            RecoveryDate = DateTime.Now;
         }
 
     }

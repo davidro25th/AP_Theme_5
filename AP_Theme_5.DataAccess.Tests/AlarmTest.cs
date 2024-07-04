@@ -7,6 +7,7 @@ using AP_Theme_5.DataAccess.Tests.Utilities;
 using AP_Theme_5.Domain.Entities.Configuration_Data;
 using AP_Theme_5.Domain.Entities.HistoricData;
 using AP_Theme_5.Domain.Entities.Types;
+using AP_Theme_5.Domain.Types;
 using AP_Theme_5.Domain.ValueObjects;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
@@ -32,28 +33,30 @@ namespace AP_Theme_5.DataAccess.Tests
         }
 
 
-        [DataRow(15.4, Priority.High, 15 / 12 / 2024, 16 / 12 / 2024,
-            "Temperatura del Tanque 2", "PBCl2", "Temperatura", "Celsius")]
-        [DataRow(2, Priority.Low, 15 / 8 / 2023, 16 / 8 / 2023,
-            "Presion en la Caldera 3", "PBCl3", "Presion", "Bar")]
+        [DataRow(15.4, Priority.High,"Temperatura del Tanque 2", "PBCl2", "Temperatura")]
+        [DataRow(2, Priority.Low,"Presion en la Caldera 3", "PBCl3", "Presion")]
 
         [TestMethod]
         public void Can_Add_Alarm(
             double out_of_range,
             Priority Priority,
+            //DateTime incidenceDate,
+            //DateTime recoveryDate,
             string name,
             string code,
-            string unitType,
-            string unitName)
+            string unitType)
         {
 
             //Arrange
             Guid id = Guid.NewGuid();
+            string unitName = "Celcius";
             Alarm alarm = new Alarm(new AlarmConfiguration(
-                out_of_range, new Variable(code)));
-
-
-            //TODO Add Remaining Alarm properties
+                out_of_range, new Variable(name, code, new MeasurementUnit(unitName, unitType))));
+            alarm.Id = id;
+            alarm.AlarmConfiguration.Priority = Priority;
+            alarm.AlarmConfiguration.AlarmVariable.Id = Guid.NewGuid();
+            alarm.Recovery();
+            //TODO Add Remaining Alarm properties(done)**
 
             //Execute
             _alarmRepository.AddAlarm(alarm);

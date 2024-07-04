@@ -5,14 +5,24 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace AP_Theme_5.DataAcces.FluentConfigurations.HistoricalData
 {
+    /// <summary>
+    /// Configuracion de la tabla AuditEvent
+    /// </summary>
     internal class AuditEventEntityTypeConfiguration
         : EntityTypeConfigurationBase<AuditEvent>
     {
         public override void Configure(EntityTypeBuilder<AuditEvent> builder)
         {
-            //Relacion entre AuditEvent y Worker
+            /// <summary>
+            /// Nombre de la tabla: "AuditEvents"
+            /// </summary>
             builder.ToTable("AuditEvents");
-            //builder.HasOne(x => x.Worker).WithMany().HasForeignKey(x => x.WorkerId);
+            /// <summary>
+            /// Relacion de uno a muchos con Worker
+            /// </summary>
+            builder.HasOne(x => x.Worker)
+                .WithMany()
+                .HasForeignKey(x => x.Id);
             base.Configure(builder);
 
 

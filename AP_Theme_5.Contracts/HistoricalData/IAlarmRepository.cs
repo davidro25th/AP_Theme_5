@@ -1,12 +1,10 @@
 ﻿using AP_Theme_5.Domain.Entities.HistoricData;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AP_Theme_5.Contracts.HistoricalData
 {
+    /// <summary>
+    /// Describe las funcionalidades necesarias para dar persistencia a un objeto de tipo Alarm
+    /// </summary>
     public interface IAlarmRepository
     {
         /// <summary>

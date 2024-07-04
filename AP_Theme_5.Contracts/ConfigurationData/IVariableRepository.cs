@@ -1,20 +1,16 @@
 ﻿using AP_Theme_5.Domain.Entities.Configuration_Data;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AP_Theme_5.Contracts.ConfigurationData
 {
     /// <summary>
-    /// Describe las funcionalidades necesarias para dar persistencia a un objeto del tipo Worker
+    /// Describe las funcionalidades necesarias para dar persistencia a un objeto del tipo Variable
     /// </summary>
     public interface IVariableRepository
     {
         /// <summary>
-        /// Agrega una Variable al soporte de datos
+        /// Agrega una variable al soporte de datos
         /// </summary>
+        /// <param name="variable"></param>
         void AddVariable(Variable variable);
         /// <summary>
         /// Obtiene una Variable del soporte de datos a partir de su identificador
@@ -22,16 +18,19 @@ namespace AP_Theme_5.Contracts.ConfigurationData
         /// <param name="id"></param>
         Variable? GetVariableById(Guid id);
         /// <summary>
-        /// Obtiene todos las Variables del soporte de Datos
+        /// Obtiene todas las variables del soporte de datos
         /// </summary>
+        /// <returns></returns>
         public IEnumerable<Variable> GetAllVariables();
         /// <summary>
-        /// Actualiza una Variable en el soporte de datos
+        /// Actualiza una variable en el soporte de datos
         /// </summary>
+        /// <param name="variable"></param>
         void UpdateVariable(Variable variable);
         /// <summary>
-        /// Elimina una Variable del soporte de datos
+        /// Elimina una variable del soporte de datos
         /// </summary>
+        /// <param name="variable"></param>
         void DeleteVariable(Variable variable);
     }
 }

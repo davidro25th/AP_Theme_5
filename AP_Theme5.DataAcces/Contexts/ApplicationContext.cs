@@ -1,9 +1,10 @@
 ﻿using AP_Theme_5.DataAcces.FluentConfigurations.Alarms;
 using AP_Theme_5.DataAcces.FluentConfigurations.ConfigurationData;
 using AP_Theme_5.DataAcces.FluentConfigurations.HistoricalData;
+using AP_Theme_5.DataAcces.FluentConfigurations.Types;
 using AP_Theme_5.Domain.Entities.Configuration_Data;
 using AP_Theme_5.Domain.Entities.HistoricData;
-using AP_Theme_5.Domain.ValueObjects;
+using AP_Theme_5.Domain.Types;
 using Microsoft.EntityFrameworkCore;
 
 namespace AP_Theme_5.DataAcces.Context
@@ -79,9 +80,11 @@ namespace AP_Theme_5.DataAcces.Context
 
             modelBuilder.Entity<Alarm>().ToTable("Alarms");
 
-            modelBuilder.Entity<AuditEvent>().ToTable("AuditEvent");
+            modelBuilder.Entity<AuditEvent>().ToTable("AuditEvents");
 
+            modelBuilder.Entity<MeasurementUnit>().ToTable("MeasurementUnits");
             
+
 
             #endregion
 
@@ -89,6 +92,7 @@ namespace AP_Theme_5.DataAcces.Context
             modelBuilder.ApplyConfiguration(new WorkerEntityTypeConfiguration());
             modelBuilder.ApplyConfiguration(new AlarmEntityTypeConfiguration());
             modelBuilder.ApplyConfiguration(new AuditEventEntityTypeConfiguration());
+            modelBuilder.ApplyConfiguration(new MeasurementUnitEntityTypeConfiguration());
         }
 
 

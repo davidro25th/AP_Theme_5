@@ -5,17 +5,24 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace AP_Theme_5.DataAcces.FluentConfigurations.ConfigurationData
 {
+    /// <summary>
+    /// Configuracion de la tabla Variables
+    /// </summary>
     internal class VariableEntityTypeConfiguration
         : EntityTypeConfigurationBase<Variable>
     {
         public override void Configure(EntityTypeBuilder<Variable> builder)
         {
+            /// <summary>
+            /// Nombre de la tabla: "Variables"
+            /// </summary>
             builder.ToTable("Variables");
-            //Relacion entre variable y unidad de medida
-            //builder.HasOne(x => x.MeasurementUnit)
-            //   .WithMany().HasForeignKey(x => x.MeasurementUnitId);
-            //Considerando MeasurementUnit Value Object
-            builder.OwnsOne(x => x.MeasurementUnit);
+            /// <summary>
+            /// Relacion de uno a muchos con MeasurementUnit
+            /// </summary>
+            builder.HasOne(x => x.MeasurementUnit)
+                .WithMany()
+                .HasForeignKey(x => x.Id);
             base.Configure(builder);
 
         }

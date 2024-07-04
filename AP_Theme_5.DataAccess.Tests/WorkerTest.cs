@@ -28,8 +28,8 @@ namespace AP_Theme_5.DataAccess.Tests
             _unitOfWork = new UnitOfWork(context);
         }
 
-        [DataRow("01062587963", "+53654569", "Juana", "de Arco")]
-        [DataRow("01062587964", "+53654560", "Juan", "de los Palostres")]
+        [DataRow("01062587963", "53654569", "Juana", "de Arco")]
+        [DataRow("01062587964", "53654560", "Juan", "de los Palostres")]
         [TestMethod]
         public void Can_Add_Worker(
             string identityCard,
@@ -39,9 +39,14 @@ namespace AP_Theme_5.DataAccess.Tests
         {
 
             //Arrange
-            Guid id = Guid.NewGuid();
+            Guid id;
             Worker worker = Worker.Create(identityCard);
-            //TODO Add Remaining Worker properties
+            id = worker.Id;
+            worker.SetPhoneNumber(phone_number);
+            worker.Firstname = firstname;
+            worker.Lastname = lastname;
+
+            //TODO Add Remaining Worker properties(done)**
 
             //Execute
             _workerRepository.AddWorker(worker);

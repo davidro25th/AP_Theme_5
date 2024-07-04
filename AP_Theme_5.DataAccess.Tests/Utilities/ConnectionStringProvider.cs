@@ -11,6 +11,6 @@ namespace AP_Theme_5.DataAccess.Tests.Utilities
     /// </summary>
     public static class ConnectionStringProvider
     {
-        public static string GetConnectionString() => "Data.Source=Data.sqlite";
+        public static string GetConnectionString() => "Data Source = ProgramdB.sqlite";
     }
 }

@@ -2,11 +2,6 @@
 using AP_Theme_5.DataAcces.Context;
 using AP_Theme_5.DataAcces.Repositories.Common;
 using AP_Theme_5.Domain.Entities.Configuration_Data;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AP_Theme_5.DataAcces.Repositories.ConfigurationData
 {
@@ -16,6 +11,10 @@ namespace AP_Theme_5.DataAcces.Repositories.ConfigurationData
     public class VariableRepository :
         RepositoryBase, IVariableRepository
     {
+        /// <summary>
+        /// Contexto para el acceso al sistema de datos del repositorio
+        /// </summary>
+        /// <param name="context"></param>
         public VariableRepository(ApplicationContext context) : base(context)
         {
         }

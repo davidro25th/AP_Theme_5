@@ -18,14 +18,15 @@ namespace AP_Theme_5.Domain.Entities.HistoricData
         /// <summary>
         /// Fecha de ocurrencia del evento
         /// </summary>
-        public DateTime Ocurrence { get; set; }
+        public DateTime Ocurrence { get; private set; }
         /// <summary>
         /// Operario que va a realizar la accion
-        /// </summary>
-        /// <summary>
         /// Relacion uno a muchos entre AuditEvent y Worker
         /// </summary>
-        public Worker Worker { get; set; }
+        public Worker Worker { get; set; }  
+        /// <summary>
+        /// Referencia de uno a muchos con Worker
+        /// </summary>
         public Guid WorkerId { get; set; }
         #endregion
 
@@ -40,7 +41,7 @@ namespace AP_Theme_5.Domain.Entities.HistoricData
         {
             Action = action;
             Worker = worker;
-            //WorkerId = worker.Id;
+            Ocurrence = DateTime.Now;
         }
     }
 }

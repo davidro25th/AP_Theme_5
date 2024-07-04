@@ -44,8 +44,14 @@ namespace AP_Theme_5.DataAccess.Tests
 
             //Arrange
             Guid id = Guid.NewGuid();
-            AuditEvent auditEvent = new AuditEvent( action, Worker.Create(identityCard)  );
-            //TODO Add Remaining AuditEvent properties
+            Worker worker = Worker.Create(identityCard);
+            worker.SetPhoneNumber(phone_number);
+            worker.Firstname = firstname;
+            worker.Lastname = lastname;
+            AuditEvent auditEvent = new AuditEvent( action, worker  );
+            //auditEvent.Ocurrence = ocurrence;
+
+            //TODO Add Remaining AuditEvent properties(done)**
 
             //Execute
             _auditEventRepository.AddAuditEvent(auditEvent);

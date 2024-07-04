@@ -1,5 +1,5 @@
 ﻿using AP_Theme_5.Domain.Common;
-using AP_Theme_5.Domain.ValueObjects;
+using AP_Theme_5.Domain.Types;
 
 namespace AP_Theme_5.Domain.Entities.Configuration_Data
 {
@@ -21,13 +21,11 @@ namespace AP_Theme_5.Domain.Entities.Configuration_Data
         /// Unidad de medida de la variable
         /// </summary>
         public MeasurementUnit? MeasurementUnit { get; set; }
+        ///<summary>
+        ///Llave foranea de la unidad de medida
+        ///</summary>
+        public Guid MeasurementUnitId { get; set; }
         #endregion
-
-        /// <summary>
-        /// Referencia uno a muchos con MeasurementUnit
-        /// Por Ahora measurement unit es Value Object
-        /// </summary>
-        //public Guid MeasurementUnitId { get; set; }
 
         /// <summary>
         /// Constructor Requerido por Entity Framework
@@ -36,9 +34,11 @@ namespace AP_Theme_5.Domain.Entities.Configuration_Data
         /// <summary>
         /// Constructor de la Clase Variable
         /// </summary>
-        public Variable(string code)
+        public Variable(string? name, string code, MeasurementUnit? measurementUnit)
         {
+            name = Name;
             Code = code;
+            MeasurementUnit = measurementUnit;
         }
     }
 }

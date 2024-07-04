@@ -5,19 +5,19 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace AP_Theme_5.DataAcces.FluentConfigurations.ConfigurationData
 {
+    /// <summary>
+    /// Configuracion de la tabla Workers
+    /// </summary>
     internal class WorkerEntityTypeConfiguration
         : EntityTypeConfigurationBase<Worker>
     {
         public override void Configure(EntityTypeBuilder<Worker> builder)
         {
+            /// <summary>
+            /// Nombre de la tabla: "Workers"
+            /// </summary>
             builder.ToTable("Workers");
-            //no se si lo lleva***
-            builder.HasMany(x => x.AuditEvent)
-                .WithOne(x => x.Worker);
             base.Configure(builder);
-
-            //TODO Finish Worker Configuration
-            //TODO Clean
         }
     }
 }

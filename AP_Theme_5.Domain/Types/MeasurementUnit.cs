@@ -1,11 +1,12 @@
-﻿using AP_Theme_5.Domain.Entities.Common;
+﻿using AP_Theme_5.Domain.Common;
+using AP_Theme_5.Domain.Entities.Configuration_Data;
 
-namespace AP_Theme_5.Domain.ValueObjects
+namespace AP_Theme_5.Domain.Types
 {
     /// <summary>
     /// Unidades de medida de la variable
     /// </summary>
-    public class MeasurementUnit : ValueObject
+    public class MeasurementUnit : Entity
     {
         #region Properties
         /// <summary>
@@ -15,13 +16,12 @@ namespace AP_Theme_5.Domain.ValueObjects
         /// <summary>
         /// Nombre de la Unidad de Medida (Kelvin, Bar, Libra)
         /// </summary>
-        public string UnitName { get; set; }
+        public string? UnitName { get; set; }
         #endregion
         /// <summary>
         /// Referencia uno a muchos con Variable
-        /// Por ahora considerandose Value object no necesita la referencia
         /// </summary>
-        //public List<Variable> Variable { get; set; }
+        public List<Variable>? Variable { get; set; }
 
         /// <summary>
         /// Constructor Requerido por Entity Framework
@@ -31,18 +31,10 @@ namespace AP_Theme_5.Domain.ValueObjects
         /// Constructor para la unidad de Medida
         /// </summary>
         /// <param name="UnitName"></param>
-        public MeasurementUnit(string UnitName)
+        public MeasurementUnit(string unitName, string unitType)
         {
-            this.UnitName = UnitName;
-        }
-        /// <summary>
-        /// Implementacion de GetEqualityComponents en AlarmConfiguration
-        /// </summary>
-        /// <returns></returns>
-        protected override IEnumerable<object> GetEqualityComponents()
-        {
-            yield return UnitType; 
-            yield return UnitName;
-        }
+            UnitName = unitName;
+            UnitType = unitType;
+        }    
     }
 }

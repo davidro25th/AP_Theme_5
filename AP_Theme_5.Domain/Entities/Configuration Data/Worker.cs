@@ -20,11 +20,11 @@ namespace AP_Theme_5.Domain.Entities.Configuration_Data
         /// <summary>
         /// Identificacion del operario
         /// </summary>
-        public string IdentityCard { get; set; }
+        public string IdentityCard { get; private set; }
         /// <summary>
         /// Numero de telefono del operario
         /// </summary>
-        public string? PhoneNumber { get; set; }//vqlidqr en el set
+        public string? PhoneNumber { get; private set; }
         #endregion
 
         /// <summary>
@@ -39,7 +39,7 @@ namespace AP_Theme_5.Domain.Entities.Configuration_Data
         /// <summary>
         /// Constructor de la clase Worker
         /// </summary>
-        private Worker(Guid ID, string identityCard)
+        private Worker(Guid ID, string identityCard, string? firstName, string? lastName , string? phoneNumber)
         {
             Id = ID;
             IdentityCard = identityCard;
@@ -59,7 +59,26 @@ namespace AP_Theme_5.Domain.Entities.Configuration_Data
             {
                 return null;
             }
-            return new Worker(Guid.NewGuid(), identityCard);
+            return new Worker(Guid.NewGuid(), identityCard, null, null, null);
+        }
+        /// <summary>
+        /// Metodo para validar el formato del Numero de telefono
+        /// </summary>
+        /// <param name="phoneNumber"></param>
+        public void SetPhoneNumber(string phoneNumber)
+        {
+            if (phoneNumber.Length != 10)
+            {
+                PhoneNumber = null;
+            }
+            else if(!phoneNumber.All(char.IsDigit))
+            {
+                PhoneNumber= null;
+            }
+            else
+            {
+                PhoneNumber = phoneNumber;
+            }
         }
     }
 

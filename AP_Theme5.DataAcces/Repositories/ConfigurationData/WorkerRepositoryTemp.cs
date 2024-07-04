@@ -2,11 +2,6 @@
 using AP_Theme_5.DataAcces.Context;
 using AP_Theme_5.DataAcces.Repositories.Common;
 using AP_Theme_5.Domain.Entities.Configuration_Data;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AP_Theme_5.DataAcces.Repositories.ConfigurationData
 {

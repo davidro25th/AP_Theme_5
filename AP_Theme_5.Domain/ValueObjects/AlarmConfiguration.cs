@@ -4,6 +4,9 @@ using AP_Theme_5.Domain.Entities.Types;
 
 namespace AP_Theme_5.Domain.ValueObjects
 {
+    /// <summary>
+    /// Clase q configura un objeto de tipo Alarm. Es necesaria para crear un objeto de este tipo
+    /// </summary>
     public class AlarmConfiguration : ValueObject
     {
         #region Properties
@@ -33,6 +36,7 @@ namespace AP_Theme_5.Domain.ValueObjects
         {
             OutOfRange = out_of_range;
             AlarmVariable = alarmVariable;
+            Priority = Priority.Low;
         }
 
         /// <summary>
