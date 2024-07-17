@@ -13,6 +13,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AP_Theme_5.Contracts", "AP_
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AP_Theme_5.DataAccess.Tests", "AP_Theme_5.DataAccess.Tests\AP_Theme_5.DataAccess.Tests.csproj", "{B5B1B2DD-F66A-48B1-AD6E-7771E7A62D9D}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AP_Theme_5.GrpcProtos", "AP_Theme_5.Grpc.Protos\AP_Theme_5.GrpcProtos.csproj", "{7FACE80E-B6C6-4154-B0DA-F0DA7D44C4D5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GrpcService1", "GrpcService1\GrpcService1.csproj", "{EBB16432-0B01-4294-BAF2-0C84AE4D4731}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +43,14 @@ Global
 		{B5B1B2DD-F66A-48B1-AD6E-7771E7A62D9D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B5B1B2DD-F66A-48B1-AD6E-7771E7A62D9D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B5B1B2DD-F66A-48B1-AD6E-7771E7A62D9D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7FACE80E-B6C6-4154-B0DA-F0DA7D44C4D5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7FACE80E-B6C6-4154-B0DA-F0DA7D44C4D5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7FACE80E-B6C6-4154-B0DA-F0DA7D44C4D5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7FACE80E-B6C6-4154-B0DA-F0DA7D44C4D5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EBB16432-0B01-4294-BAF2-0C84AE4D4731}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EBB16432-0B01-4294-BAF2-0C84AE4D4731}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EBB16432-0B01-4294-BAF2-0C84AE4D4731}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EBB16432-0B01-4294-BAF2-0C84AE4D4731}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

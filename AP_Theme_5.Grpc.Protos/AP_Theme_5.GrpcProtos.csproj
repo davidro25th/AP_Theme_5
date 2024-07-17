@@ -1,0 +1,33 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Google.Protobuf" Version="3.27.2" />
+    <PackageReference Include="Grpc.AspNetCore" Version="2.63.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="common.proto">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>common.cs</LastGenOutput>
+    </None>
+    <None Update="MeasurmentUnit.proto">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>MeasurmentUnit.cs</LastGenOutput>
+    </None>
+    <None Update="Worker.proto">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Worker.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Service Include="{508349b6-6b84-4df5-91f0-309beebad82d}" />
+  </ItemGroup>
+
+</Project>

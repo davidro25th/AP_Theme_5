@@ -1,0 +1,36 @@
+﻿syntax = "proto3";
+option csharp_namespace = "AP_Theme_5.GrpcProtos";
+package GrpcProtos;
+
+import "google/protobuf/wrappers.proto";
+import "google/protobuf/empty.proto";
+import "google/protobuf/struct.proto";
+import "common.proto";
+
+service MeasurementUnit{
+	rpc CreateMeasurementUnit (CreateMeasurementUnitRequest) returns (MeasurementUnitDTO);
+	rpc GetMeasurementUnit (GetRequest) returns (NullableMeasurementUnitDTO);
+	rpc GetAllMeasurementUnits (google.protobuf.empty) returns (NullableMeasurementUnitDTO);
+	rpc UpdateMeasurementUnit (MeasurementUnitDTO) returns (google.protobuf.empty);
+	rpc DeleteMeasurementUnit (DeleteRequest) returns (google.protobuf.empty);
+}
+
+message MeasurementUnitDTO{
+	string name = 1;
+	string unitType = 2;
+}
+
+message MeasurementUnits{
+	repeated MeasurementUnitDTO items = 1;
+} 
+
+message NullableMeasurementUnitDTO{
+	oneof kind{
+		google.protobuf.NullValue null = 1;
+		MeasurementUnitDTO worker = 2;
+	}
+}
+
+message CreateMeasurementUnitRequest{
+	string identitycard = 1;
+}
