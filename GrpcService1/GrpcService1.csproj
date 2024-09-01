@@ -1,0 +1,24 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Protobuf Include="Protos\greet.proto" GrpcServices="Server" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Google.Protobuf" Version="3.27.2" />
+    <PackageReference Include="Grpc.AspNetCore" Version="2.63.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\AP_Theme5.DataAcces\AP_Theme_5.DataAcces.csproj" />
+    <ProjectReference Include="..\AP_Theme_5.Contracts\AP_Theme_5.Contracts.csproj" />
+    <ProjectReference Include="..\AP_Theme_5.GrpcProtos\AP_Theme_5.GrpcProtos.csproj" />
+  </ItemGroup>
+
+</Project>

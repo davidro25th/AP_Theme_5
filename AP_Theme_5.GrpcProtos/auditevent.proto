@@ -1,0 +1,44 @@
+﻿syntax = "proto3";
+
+option csharp_namespace = "AP_Theme_5.GrpcProtos";
+
+package GrpcProtos;
+
+import "google/protobuf/wrappers.proto";
+import "google/protobuf/empty.proto";
+import "google/protobuf/struct.proto";
+import "google/protobuf/timestamp.proto";
+import "worker.proto";
+import "common.proto";
+
+service AuditEvent{
+	rpc CreateAuditEvent (CreateAuditEventRequest) returns (AuditEventDTO);
+	rpc GetAuditEvent (GetRequest) returns (NullableAuditEventDTO);
+	rpc GetAllAuditEvents (google.protobuf.Empty) returns (AuditEvents);
+	rpc UpdateAuditEvent (AuditEventDTO) returns (google.protobuf.Empty);
+	rpc DeleteAuditEvent (DeleteRequest) returns (google.protobuf.Empty);
+}
+
+message AuditEventDTO{
+	string id = 1;
+	string action = 2;
+	google.protobuf.Timestamp ocurrence = 3;
+	WorkerDTO worker = 4;
+	string workerid = 5;
+}
+
+message AuditEvents{
+	repeated AuditEventDTO items = 1;
+}
+
+message NullableAuditEventDTO{
+	oneof kind{
+		google.protobuf.NullValue null = 1;
+		AuditEventDTO auditevent = 2;
+	}
+}
+
+message CreateAuditEventRequest{
+	string action = 1;
+	WorkerDTO worker = 2;
+}

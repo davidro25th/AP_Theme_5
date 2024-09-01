@@ -1,0 +1,19 @@
+﻿syntax = "proto3";
+
+option csharp_namespace = "AP_Theme_5.GrpcProtos";
+
+package GrpcProtos;
+
+message GetRequest{
+	string id = 1;
+}
+
+message DeleteRequest{
+	string id = 1;
+}
+
+enum Priority{
+	Low = 0;
+	Medium = 1;
+	High = 2;
+}

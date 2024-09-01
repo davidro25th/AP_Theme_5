@@ -1,0 +1,41 @@
+﻿syntax = "proto3";
+
+option csharp_namespace = "AP_Theme_5.GrpcProtos";
+
+package GrpcProtos;
+
+import "google/protobuf/wrappers.proto";
+import "google/protobuf/empty.proto";
+import "google/protobuf/struct.proto";
+import "common.proto";
+
+service Worker{
+	rpc CreateWorker (CreateWorkerRequest) returns (WorkerDTO);
+	rpc GetWorker (GetRequest) returns (NullableWorkerDTO);
+	rpc GetAllWorkers (google.protobuf.Empty) returns (Workers);
+	rpc UpdateWorker (WorkerDTO) returns (google.protobuf.Empty);
+	rpc DeleteWorker (DeleteRequest) returns (google.protobuf.Empty);
+}
+
+message WorkerDTO{
+	string id = 1;
+	string firstname = 2;
+	string lastname = 3;
+	string identity_card = 4;
+	string phone_number = 5;
+}
+
+message Workers{
+	repeated WorkerDTO items = 1;
+}
+
+message NullableWorkerDTO{
+	oneof kind{
+		google.protobuf.NullValue null = 1;
+		WorkerDTO worker = 2;
+	}
+}
+
+message CreateWorkerRequest{
+	string identity_card = 1;
+}

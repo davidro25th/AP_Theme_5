@@ -1,0 +1,44 @@
+﻿syntax = "proto3";
+
+option csharp_namespace = "AP_Theme_5.GrpcProtos";
+
+package GrpcProtos;
+
+import "google/protobuf/wrappers.proto";
+import "google/protobuf/empty.proto";
+import "google/protobuf/struct.proto";
+import "common.proto";
+import "measurementunit.proto";
+
+service Variable{
+	rpc CreateVariable (CreateVariableRequest) returns (VariableDTO);
+	rpc GetVariable (GetRequest) returns (NullableVariableDTO);
+	rpc GetAllVariables (google.protobuf.Empty) returns (Variables);
+	rpc UpdateVariable (VariableDTO) returns (google.protobuf.Empty);
+	rpc DeleteVariable (DeleteRequest) returns (google.protobuf.Empty);
+}
+
+message VariableDTO{
+	string id = 1;
+	string name = 2;
+	string code = 3;
+	MeasurementUnitDTO measurementunit = 4;
+	string measurementunitid = 5;
+}
+
+message Variables{
+	repeated VariableDTO items = 1;
+}
+
+message NullableVariableDTO{
+	oneof kind{
+		google.protobuf.NullValue null = 1;
+		VariableDTO variable = 2;
+	}
+}
+
+message CreateVariableRequest{
+	string name = 1;
+	string code = 2;
+	MeasurementUnitDTO measurementunit = 3;
+}

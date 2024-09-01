@@ -1,0 +1,31 @@
+﻿using AP_Theme_5.GrpcProtos;
+using Google.Protobuf.WellKnownTypes;
+using Grpc.Core;
+
+
+namespace GrpcService1.Services
+{
+    public class AlarmConfigurationService : AlarmConfiguration.AlarmConfigurationBase
+    {
+        public override Task<AlarmConfigurationDTO> CreateAlarmConfiguration(CreateAlarmConfigurationRequest request, ServerCallContext context)
+        {
+            return base.CreateAlarmConfiguration(request, context);
+        }
+        public override Task<NullableAlarmConfigurationDTO> GetAlarmConfiguration(GetRequest request, ServerCallContext context)
+        {
+            return base.GetAlarmConfiguration(request, context);
+        }
+        public override Task<AlarmConfigurations> GetAllAlarmConfigurations(Empty request, ServerCallContext context)
+        {
+            return base.GetAllAlarmConfigurations(request, context);
+        }
+        public override Task<Empty> UpdateAlarmConfiguration(AlarmConfigurationDTO request, ServerCallContext context)
+        {
+            return base.UpdateAlarmConfiguration(request, context);
+        }
+        public override Task<Empty> DeleteAlarmConfiguration(DeleteRequest request, ServerCallContext context)
+        {
+            return base.DeleteAlarmConfiguration(request, context);
+        }
+    }
+}

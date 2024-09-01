@@ -1,0 +1,42 @@
+﻿syntax = "proto3";
+
+option csharp_namespace = "AP_Theme_5.GrpcProtos";
+
+package GrpcProtos;
+
+import "google/protobuf/wrappers.proto";
+import "google/protobuf/empty.proto";
+import "google/protobuf/struct.proto";
+import "google/protobuf/timestamp.proto";
+import "alarmconfiguration.proto";
+import "common.proto";
+
+service Alarm{
+	rpc CreateAlarm (CreateAlarmRequest) returns (AlarmDTO);
+	rpc GetAlarm (GetRequest) returns (NullableAlarmDTO);
+	rpc GetAllAlarms (google.protobuf.Empty) returns (Alarms);
+	rpc UpdateAlarm (AlarmDTO) returns (google.protobuf.Empty);
+	rpc DeleteAlarm (DeleteRequest) returns (google.protobuf.Empty);
+}
+
+message AlarmDTO{
+	string id = 1;
+	google.protobuf.Timestamp incidencedate = 2;
+	google.protobuf.Timestamp recoverydate = 3;
+	AlarmConfigurationDTO alarmconfiguration = 4;
+}
+
+message Alarms{
+	repeated AlarmDTO items = 1;
+}
+
+message NullableAlarmDTO{
+	oneof kind{
+		google.protobuf.NullValue null = 1;
+		AlarmDTO alarm = 2;
+	}
+}
+
+message CreateAlarmRequest{
+	AlarmConfigurationDTO alarmconfiguration = 1;
+}
