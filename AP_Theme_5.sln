@@ -13,9 +13,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AP_Theme_5.Contracts", "AP_
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AP_Theme_5.DataAccess.Tests", "AP_Theme_5.DataAccess.Tests\AP_Theme_5.DataAccess.Tests.csproj", "{B5B1B2DD-F66A-48B1-AD6E-7771E7A62D9D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GrpcService1", "GrpcService1\GrpcService1.csproj", "{D9EDC861-E95C-4D54-94AD-8A42AB441DD4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GrpcService1", "GrpcService1\GrpcService1.csproj", "{D9EDC861-E95C-4D54-94AD-8A42AB441DD4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AP_Theme_5.GrpcProtos", "AP_Theme_5.GrpcProtos\AP_Theme_5.GrpcProtos.csproj", "{ECCE2174-96F1-4248-B881-21F917FE08E9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AP_Theme_5.GrpcProtos", "AP_Theme_5.GrpcProtos\AP_Theme_5.GrpcProtos.csproj", "{ECCE2174-96F1-4248-B881-21F917FE08E9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AP_Theme_5.Application", "AP_Theme_5.Application\AP_Theme_5.Application.csproj", "{F444AC09-775F-4B7A-870D-24B681042E17}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,6 +53,10 @@ Global
 		{ECCE2174-96F1-4248-B881-21F917FE08E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ECCE2174-96F1-4248-B881-21F917FE08E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{ECCE2174-96F1-4248-B881-21F917FE08E9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F444AC09-775F-4B7A-870D-24B681042E17}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F444AC09-775F-4B7A-870D-24B681042E17}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F444AC09-775F-4B7A-870D-24B681042E17}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F444AC09-775F-4B7A-870D-24B681042E17}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

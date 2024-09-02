@@ -1,4 +1,6 @@
-﻿using AP_Theme_5.GrpcProtos;
+﻿using AP_Theme_5.Contracts;
+using AP_Theme_5.Contracts.ConfigurationData;
+using AP_Theme_5.GrpcProtos;
 using Google.Protobuf.WellKnownTypes;
 using Grpc.Core;
 
@@ -6,6 +8,15 @@ namespace GrpcService1.Services
 {
     public class WorkerService : Worker.WorkerBase
     {
+        private readonly IWorkerRepository _workerRepository;
+        private readonly IUnitOfWork _unitOfWork;
+
+        public WorkerService(IWorkerRepository workerRepository, IUnitOfWork unitOfWork)
+        {
+            _workerRepository = workerRepository;
+            _unitOfWork = unitOfWork;
+        }
+
         public override Task<WorkerDTO> CreateWorker(CreateWorkerRequest request, ServerCallContext context)
         {
             return base.CreateWorker(request, context);

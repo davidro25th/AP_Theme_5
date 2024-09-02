@@ -1,12 +1,21 @@
-﻿using AP_Theme_5.GrpcProtos;
+﻿using AP_Theme_5.Contracts;
+using AP_Theme_5.Contracts.HistoricalData;
+using AP_Theme_5.GrpcProtos;
 using Google.Protobuf.WellKnownTypes;
 using Grpc.Core;
 
 
 namespace GrpcService1.Services
 {
-    public class AlarmServices : Alarm.AlarmBase
+    public class AlarmService : Alarm.AlarmBase
     {
+        private readonly IAlarmRepository _workerRepository;
+        private readonly IUnitOfWork _unitOfWork;
+        public AlarmService(IAlarmRepository alarmRepository, IUnitOfWork unitOfWork)
+        {
+            _workerRepository = alarmRepository;
+            _unitOfWork = unitOfWork;
+        }
         public override Task<AlarmDTO> CreateAlarm(CreateAlarmRequest request, ServerCallContext context)
         {
             return base.CreateAlarm(request, context);
