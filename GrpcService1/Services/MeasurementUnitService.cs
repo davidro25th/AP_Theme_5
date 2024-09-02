@@ -2,8 +2,10 @@
 using AP_Theme_5.Contracts.Types;
 using AP_Theme_5.DataAcces.Repositories.Types;
 using AP_Theme_5.GrpcProtos;
+using AutoMapper;
 using Google.Protobuf.WellKnownTypes;
 using Grpc.Core;
+using MediatR;
 
 namespace GrpcService1.Services
 {
@@ -36,5 +38,15 @@ namespace GrpcService1.Services
         {
             return base.DeleteMeasurementUnit(request, context);
         }
+
+        private readonly IMediator _mediator;
+        private readonly IMapper _mapper;
+
+        public MeasurementUnitService(IMediator _mediator, IMapper _mapper)
+        {
+            _mediator = _mediator;
+            _mapper = _mapper;
+        }
+
     }
 }

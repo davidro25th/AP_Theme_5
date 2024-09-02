@@ -1,8 +1,10 @@
 ﻿using AP_Theme_5.Contracts;
 using AP_Theme_5.Contracts.ConfigurationData;
 using AP_Theme_5.GrpcProtos;
+using AutoMapper;
 using Google.Protobuf.WellKnownTypes;
 using Grpc.Core;
+using MediatR;
 
 namespace GrpcService1.Services
 {
@@ -37,5 +39,16 @@ namespace GrpcService1.Services
         {
             return base.DeleteWorker(request, context);
         }
+
+        private readonly IMediator _mediator;
+        private readonly IMapper _mapper;
+
+        public WorkerService(IMediator _mediator, IMapper _mapper)
+        {
+            _mediator = _mediator;
+            _mapper = _mapper;
+        }
+
+
     }
 }

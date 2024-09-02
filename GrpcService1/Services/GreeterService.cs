@@ -18,5 +18,7 @@ namespace GrpcService1.Services
                 Message = "Hello " + request.Name
             });
         }
+
+
     }
 }

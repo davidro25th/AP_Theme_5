@@ -4,7 +4,11 @@ using AP_Theme_5.Contracts.HistoricalData;
 using AP_Theme_5.Contracts.Types;
 using AP_Theme_5.DataAcces;
 using AP_Theme_5.DataAcces.Context;
+using AutoMapper;
 using GrpcService1.Services;
+using MediatR;
+using Microsoft.Extensions.DependencyInjection;
+using System.Reflection.Metadata;
 
 public class GrpcProgram
 {
@@ -29,6 +33,14 @@ public class GrpcProgram
         //app.MapGrpcService<AlarmServices>();
         app.MapGet("/", () => "Communication with gRPC endpoints must be made through a gRPC client. To learn how to create a client, visit: https://go.microsoft.com/fwlink/?linkid=2086909");
 
+        builder.Services.AddMediatR(new MediatRServiceConfiguration()
+        {
+            AutoRegisterRequestProcessors = true
+        }
+        .RegisterServicesFromAssemblies(  typeof(AssemblyReference).Assembly));
+           
+        
+
         builder.Services.AddSingleton("Data Source=Data.Sqlite");
         builder.Services.AddScoped<ApplicationContext>();
         builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
@@ -37,8 +49,7 @@ public class GrpcProgram
         builder.Services.AddScoped<IAlarmRepository>();
         builder.Services.AddScoped<IAuditEventRepository>();
         builder.Services.AddScoped<IMeasurementUnitRepository>();
-
-
+        builder.Services.AddAutoMapper(typeof(GrpcProgram).Assembly );
 
         app.Run();
     }
