@@ -21,6 +21,14 @@ public class GrpcProgram
 
         // Add services to the container.
         builder.Services.AddGrpc();
+        builder.Services.AddAutoMapper( typeof(GrpcProgram).Assembly);
+        builder.Services.AddSingleton("Data Source = Data.sqlite");       
+        builder.Services.AddScoped<IVariableRepository>();
+        builder.Services.AddScoped<IWorkerRepository>();
+        builder.Services.AddScoped<IAuditEventRepository>();
+        builder.Services.AddScoped<IAlarmRepository>();
+        builder.Services.AddScoped<IMeasurementUnitRepository>();
+        builder.Services.AddAutoMapper(typeof(GrpcProgram).Assembly);
 
         var app = builder.Build();
 
@@ -34,23 +42,14 @@ public class GrpcProgram
         app.MapGrpcService<AuditEventService>();
         app.MapGet("/", () => "Communication with gRPC endpoints must be made through a gRPC client. To learn how to create a client, visit: https://go.microsoft.com/fwlink/?linkid=2086909");
 
+       
+
         builder.Services.AddMediatR(new MediatRServiceConfiguration()
         {
             AutoRegisterRequestProcessors = true
         }
-        .RegisterServicesFromAssemblies(  typeof(AssemblyReference).Assembly));
-           
-        
+        .RegisterServicesFromAssemblies(typeof(AssemblyReference).Assembly));
 
-        builder.Services.AddSingleton("Data Source=Data.Sqlite");
-        builder.Services.AddScoped<ApplicationContext>();
-        builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
-        builder.Services.AddScoped<IVariableRepository>();
-        builder.Services.AddScoped<IWorkerRepository>();
-        builder.Services.AddScoped<IAlarmRepository>();
-        builder.Services.AddScoped<IAuditEventRepository>();
-        builder.Services.AddScoped<IMeasurementUnitRepository>();
-        builder.Services.AddAutoMapper(typeof(GrpcProgram).Assembly );
 
         app.Run();
     }

@@ -23,6 +23,15 @@ namespace GrpcService1.Services
             _mediator = mediator;
             _mapper = mapper;
         }
+
+        private readonly IAuditEventRepository _auditEventRepository;
+        private readonly IUnitOfWork _unitOfWork;
+        public AuditEventService(IAuditEventRepository auditEventConfigurationRepository, IUnitOfWork unitOfWork)
+        {
+            _auditEventRepository = _auditEventRepository;
+            _unitOfWork = unitOfWork;
+        }
+
         public override Task<AuditEventDTO> CreateAuditEvent(CreateAuditEventRequest request, ServerCallContext context)
         {
             var command = new CreateAuditEventCommand(

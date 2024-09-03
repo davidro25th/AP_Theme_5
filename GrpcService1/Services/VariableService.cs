@@ -23,6 +23,15 @@ namespace GrpcService1.Services
             _mediator = mediator;
             _mapper = mapper;
         }
+
+        private readonly IVariableRepository _variableRepository;
+        private readonly IUnitOfWork _unitOfWork;
+        public VariableService(IVariableRepository variableConfigurationRepository, IUnitOfWork unitOfWork)
+        {
+            _variableRepository = _variableRepository;
+            _unitOfWork = unitOfWork;
+        }
+
         public override Task<VariableDTO> CreateVariable(CreateVariableRequest request, ServerCallContext context)
         {
             var command = new CreateVariableCommand(

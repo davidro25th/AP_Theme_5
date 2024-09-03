@@ -24,6 +24,13 @@ namespace GrpcService1.Services
             _mapper = mapper;
         }
 
+        private readonly IWorkerRepository _workerRepository;
+        private readonly IUnitOfWork _unitOfWork;
+        public WorkerService(IWorkerRepository workerConfigurationRepository, IUnitOfWork unitOfWork)
+        {
+            _workerRepository = _workerRepository;
+            _unitOfWork = unitOfWork;
+        }
         public override Task<WorkerDTO> CreateWorker(CreateWorkerRequest request, ServerCallContext context)
         {
             var command = AP_Theme_5.Domain.Entities.Configuration_Data.Worker.Create(request.IdentityCard);

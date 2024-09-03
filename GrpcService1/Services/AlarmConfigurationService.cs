@@ -15,7 +15,8 @@ namespace GrpcService1.Services
         {
             _alarmConfigurationRepository = alarmConfigurationRepository;
             _unitOfWork = unitOfWork;
-        }
+        }        
+
         public override Task<AlarmConfigurationDTO> CreateAlarmConfiguration(CreateAlarmConfigurationRequest request, ServerCallContext context)
         {
             return base.CreateAlarmConfiguration(request, context);

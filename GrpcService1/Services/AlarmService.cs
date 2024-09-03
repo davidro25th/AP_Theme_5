@@ -23,6 +23,15 @@ namespace GrpcService1.Services
             _mediator = mediator;
             _mapper = mapper;
         }
+
+        private readonly IAlarmRepository _alarmRepository;
+        private readonly IUnitOfWork _unitOfWork;
+        public AlarmService(IAlarmRepository alarmConfigurationRepository, IUnitOfWork unitOfWork)
+        {
+            _alarmRepository = alarmConfigurationRepository;
+            _unitOfWork = unitOfWork;
+        }
+
         public override Task<AlarmDTO> CreateAlarm(CreateAlarmRequest request, ServerCallContext context)
         {
             var command = new CreateAlarmCommand(

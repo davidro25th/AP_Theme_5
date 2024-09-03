@@ -24,6 +24,15 @@ namespace GrpcService1.Services
             _mediator = mediator;
             _mapper = mapper;
         }
+
+        private readonly IMeasurementUnitRepository _measurementUnitRepository;
+        private readonly IUnitOfWork _unitOfWork;
+        public MeasurementUnitService(IMeasurementUnitRepository measurementUnitConfigurationRepository, IUnitOfWork unitOfWork)
+        {
+            _measurementUnitRepository = _measurementUnitRepository;
+            _unitOfWork = unitOfWork;
+        }
+
         public override Task<MeasurementUnitDTO> CreateMeasurementUnit(CreateMeasurementUnitRequest request, ServerCallContext context)
         {
             var command = new CreateMeasurementUnitCommand(
