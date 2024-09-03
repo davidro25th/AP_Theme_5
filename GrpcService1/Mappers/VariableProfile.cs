@@ -13,7 +13,7 @@ namespace GrpcService1.Mappers
                 .ForMember(t => t.Code, o => o.MapFrom(t => t.Code))
                 .ForMember(t => t.Measurementunit, o => o.MapFrom(s => new AP_Theme_5.GrpcProtos.MeasurementUnits())); ;
 
-            CreateMap<AP_Theme_5.Domain.Types.MeasurementUnit, AP_Theme_5.GrpcProtos.MeasurementUnitDTO>()
+            CreateMap<AP_Theme_5.Domain.Entities.Configuration_Data.MeasurementUnit, AP_Theme_5.GrpcProtos.MeasurementUnitDTO>()
                 .ForMember(t => t.Id, o => o.MapFrom(s => s.Id.ToString()))
                 .ForMember(t => t.Unitname, o => o.MapFrom(t => t.UnitName))
                 .ForMember(t => t.Unittype, o => o.MapFrom(t => t.UnitType));

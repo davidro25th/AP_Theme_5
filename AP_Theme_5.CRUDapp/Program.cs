@@ -5,7 +5,6 @@ using AP_Theme_5.Domain.Entities.Configuration_Data;
 using AP_Theme_5.Domain.ValueObjects;
 using AP_Theme_5.DataAcces.FluentConfigurations.Alarms;
 using AP_Theme_5.Domain.Entities.HistoricData;
-using AP_Theme_5.Domain.Types;
 using System.Threading.Tasks.Dataflow;
 using AP_Theme_5.DataAcces.Repositories.HistoricalData;
 using AP_Theme_5.DataAcces;
