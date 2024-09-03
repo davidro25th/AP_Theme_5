@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using AP_Theme_5.Domain.Types;
+using AP_Theme_5.Domain.Entities.Configuration_Data;
 
 namespace AP_Theme_5.Application.Worker.Commands.CreateWorker
 {

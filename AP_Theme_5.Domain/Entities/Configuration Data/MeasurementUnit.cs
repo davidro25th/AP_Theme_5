@@ -1,7 +1,6 @@
 ﻿using AP_Theme_5.Domain.Common;
-using AP_Theme_5.Domain.Entities.Configuration_Data;
 
-namespace AP_Theme_5.Domain.Types
+namespace AP_Theme_5.Domain.Entities.Configuration_Data
 {
     /// <summary>
     /// Unidades de medida de la variable

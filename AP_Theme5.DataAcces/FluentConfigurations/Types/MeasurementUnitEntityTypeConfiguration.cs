@@ -1,5 +1,5 @@
 ﻿using AP_Theme_5.DataAcces.FluentConfigurations.Common;
-using AP_Theme_5.Domain.Types;
+using AP_Theme_5.Domain.Entities.Configuration_Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 

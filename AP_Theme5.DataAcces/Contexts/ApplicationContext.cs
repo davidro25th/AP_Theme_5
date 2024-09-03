@@ -4,7 +4,6 @@ using AP_Theme_5.DataAcces.FluentConfigurations.HistoricalData;
 using AP_Theme_5.DataAcces.FluentConfigurations.Types;
 using AP_Theme_5.Domain.Entities.Configuration_Data;
 using AP_Theme_5.Domain.Entities.HistoricData;
-using AP_Theme_5.Domain.Types;
 using Microsoft.EntityFrameworkCore;
 
 namespace AP_Theme_5.DataAcces.Context

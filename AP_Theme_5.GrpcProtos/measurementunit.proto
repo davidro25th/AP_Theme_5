@@ -30,7 +30,7 @@ message MeasurementUnits{
 message NullableMeasurementUnitDTO{
 	oneof kind{
 		google.protobuf.NullValue null = 1;
-		MeasurementUnitDTO measurementunit = 2;
+		MeasurementUnitDTO MeasurementUnit = 2;
 	}
 }
 

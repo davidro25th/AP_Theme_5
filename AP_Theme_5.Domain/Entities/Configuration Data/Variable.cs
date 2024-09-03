@@ -1,5 +1,4 @@
 ﻿using AP_Theme_5.Domain.Common;
-using AP_Theme_5.Domain.Types;
 
 namespace AP_Theme_5.Domain.Entities.Configuration_Data
 {

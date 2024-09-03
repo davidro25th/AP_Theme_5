@@ -9,7 +9,7 @@ using MediatR;
 
 namespace AP_Theme_5.Application.MeasurementUnit.Query.GetAllMeasurementUnit
 {
-    public class GetAllMeasurementUnitQueryHandler : IQueryHandler<GetAllMeasurementUnitQuery, IEnumerable<Domain.Types.MeasurementUnit>>
+    public class GetAllMeasurementUnitQueryHandler : IQueryHandler<GetAllMeasurementUnitQuery, IEnumerable<Domain.Entities.Configuration_Data.MeasurementUnit>>
     {
         private readonly IMeasurementUnitRepository _measurementUnitrepository;
         public GetAllMeasurementUnitQueryHandler( IMeasurementUnitRepository measurementUnitRepository )
@@ -17,7 +17,7 @@ namespace AP_Theme_5.Application.MeasurementUnit.Query.GetAllMeasurementUnit
             _measurementUnitrepository = measurementUnitRepository; 
         }
 
-        Task<IEnumerable<Domain.Types.MeasurementUnit>> IRequestHandler<GetAllMeasurementUnitQuery, IEnumerable<Domain.Types.MeasurementUnit>>.Handle(GetAllMeasurementUnitQuery request, CancellationToken cancellationToken)
+        Task<IEnumerable<Domain.Entities.Configuration_Data.MeasurementUnit>> IRequestHandler<GetAllMeasurementUnitQuery, IEnumerable<Domain.Entities.Configuration_Data.MeasurementUnit>>.Handle(GetAllMeasurementUnitQuery request, CancellationToken cancellationToken)
         {
             return Task.FromResult(_measurementUnitrepository.GetAllMeasurementUnits());
         }

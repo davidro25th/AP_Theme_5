@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace AP_Theme_5.Application.MeasurementUnit.Query.GetMeasurementUnitByID
 {
-    public class GetMeasurementUnitByIDQueryHandler : IQueryHandler<GetMeasurementUnitByIDQuery, Domain.Types.MeasurementUnit?>
+    public class GetMeasurementUnitByIDQueryHandler : IQueryHandler<GetMeasurementUnitByIDQuery, Domain.Entities.Configuration_Data.MeasurementUnit?>
     {
         private readonly IMeasurementUnitRepository _measurementUnitRepository;
 
@@ -17,7 +17,7 @@ namespace AP_Theme_5.Application.MeasurementUnit.Query.GetMeasurementUnitByID
             _measurementUnitRepository = measurementUnitRepository;
         }
 
-        public Task<Domain.Types.MeasurementUnit?> Handle(GetMeasurementUnitByIDQuery request, CancellationToken cancellationToken)
+        public Task<Domain.Entities.Configuration_Data.MeasurementUnit?> Handle(GetMeasurementUnitByIDQuery request, CancellationToken cancellationToken)
         {
             return Task.FromResult(_measurementUnitRepository.GetMeasurementUnitById(request.Id));
         }

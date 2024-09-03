@@ -1,6 +1,7 @@
 ﻿using AP_Theme_5.Application.Abstract;
 using AP_Theme_5.Contracts;
 using AP_Theme_5.Contracts.ConfigurationData;
+using AP_Theme_5.Domain.Entities.Configuration_Data;
 using AP_Theme_5.Contracts.Types;
 using System;
 using System.Collections.Generic;

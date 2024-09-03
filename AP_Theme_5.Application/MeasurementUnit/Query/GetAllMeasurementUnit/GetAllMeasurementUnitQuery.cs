@@ -7,6 +7,6 @@ using System.Threading.Tasks;
 
 namespace AP_Theme_5.Application.MeasurementUnit.Query.GetAllMeasurementUnit
 {
-    public record GetAllMeasurementUnitQuery() : IQuery<IEnumerable<Domain.Types.MeasurementUnit>>;
+    public record GetAllMeasurementUnitQuery() : IQuery<IEnumerable<Domain.Entities.Configuration_Data.MeasurementUnit>>;
     
 }

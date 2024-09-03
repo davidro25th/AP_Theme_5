@@ -30,7 +30,8 @@ public class GrpcProgram
         app.MapGrpcService<MeasurementUnitService>();
         app.MapGrpcService<VariableService>();
         app.MapGrpcService<AlarmConfigurationService>();
-        //app.MapGrpcService<AlarmServices>();
+        app.MapGrpcService<AlarmService>();
+        app.MapGrpcService<AuditEventService>();
         app.MapGet("/", () => "Communication with gRPC endpoints must be made through a gRPC client. To learn how to create a client, visit: https://go.microsoft.com/fwlink/?linkid=2086909");
 
         builder.Services.AddMediatR(new MediatRServiceConfiguration()

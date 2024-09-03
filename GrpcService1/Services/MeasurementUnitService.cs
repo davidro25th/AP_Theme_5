@@ -1,4 +1,8 @@
 ﻿using AP_Theme_5.Application.MeasurementUnit.Commands.CreateMeasurementUnit;
+using AP_Theme_5.Application.MeasurementUnit.Query.GetMeasurementUnitByID;
+using AP_Theme_5.Application.MeasurementUnit.Query.GetAllMeasurementUnit;
+using AP_Theme_5.Application.MeasurementUnit.Commands.UpdateMeasurementUnit;
+using AP_Theme_5.Application.MeasurementUnit.Commands.DeleteMeasurementUnit;
 using AP_Theme_5.Contracts;
 using AP_Theme_5.Contracts.Types;
 using AP_Theme_5.DataAcces.Repositories.Types;
@@ -12,12 +16,13 @@ namespace GrpcService1.Services
 {
     public class MeasurementUnitService : MeasurementUnit.MeasurementUnitBase
     {
-        private readonly IMeasurementUnitRepository _measurementUnitRepository;
-        private readonly IUnitOfWork _unitOfWork;
-        public MeasurementUnitService(MeasurementUnitRepository measurementUnitRepository, IUnitOfWork unitOfWork)
+        private readonly IMediator _mediator;
+        private readonly IMapper _mapper;
+
+        public MeasurementUnitService(IMediator mediator, IMapper mapper)
         {
-            _measurementUnitRepository = measurementUnitRepository;
-            _unitOfWork = unitOfWork;
+            _mediator = mediator;
+            _mapper = mapper;
         }
         public override Task<MeasurementUnitDTO> CreateMeasurementUnit(CreateMeasurementUnitRequest request, ServerCallContext context)
         {
@@ -25,36 +30,47 @@ namespace GrpcService1.Services
                 request.Unitname,
                 request.Unittype
                 );
-          var result = _mediator.Send(command).Result;
+            var result = _mediator.Send(command).Result;
 
-            return base.CreateMeasurementUnit(request, context);
+            return Task.FromResult(_mapper.Map<MeasurementUnitDTO>(result));
 
         }
         public override Task<NullableMeasurementUnitDTO> GetMeasurementUnit(GetRequest request, ServerCallContext context)
         {
-            return base.GetMeasurementUnit(request, context);
+            var query = new GetMeasurementUnitByIDQuery(new Guid(request.Id));
+
+            var result = _mediator.Send(query).Result;
+
+            if (result is null)
+                return Task.FromResult(new NullableMeasurementUnitDTO() { Null = NullValue.NullValue });
+            return Task.FromResult(new NullableMeasurementUnitDTO() { MeasurementUnit = _mapper.Map<MeasurementUnitDTO>(result) });
         }
         public override Task<MeasurementUnits> GetAllMeasurementUnits(Empty request, ServerCallContext context)
         {
-            return base.GetAllMeasurementUnits(request, context);
+            var query = new GetAllMeasurementUnitQuery();
+
+            var result = _mediator.Send(query).Result;
+
+            // Convirtiendo de lista de UM al mensaje de lista de DTOs de UM.
+            var motorcyclesDTOs = new MeasurementUnits();
+            motorcyclesDTOs.Items.AddRange(result.Select(m => _mapper.Map<MeasurementUnitDTO>(m)));
+
+            return Task.FromResult(motorcyclesDTOs);
         }
         public override Task<Empty> UpdateMeasurementUnit(MeasurementUnitDTO request, ServerCallContext context)
         {
-            return base.UpdateMeasurementUnit(request, context);
+            var command = new UpdateMeasurementUnitCommand(_mapper.Map<AP_Theme_5.Domain.Entities.Configuration_Data.MeasurementUnit>(request));
+
+            _mediator.Send(command);
+
+            return Task.FromResult(new Empty());
         }
         public override Task<Empty> DeleteMeasurementUnit(DeleteRequest request, ServerCallContext context)
         {
-            return base.DeleteMeasurementUnit(request, context);
-        }
+            var command = new DeleteMeasurementUnitCommand(new Guid(request.Id));
 
-        private readonly IMediator _mediator;
-        private readonly IMapper _mapper;
-
-        public MeasurementUnitService(IMediator _mediator, IMapper _mapper)
-        {
-            _mediator = _mediator;
-            _mapper = _mapper;
-        }
-
+            _mediator.Send(command);
+            return Task.FromResult(new Empty());
+        }  
     }
 }

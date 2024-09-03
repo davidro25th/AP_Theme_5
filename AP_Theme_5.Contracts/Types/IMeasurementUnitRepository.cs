@@ -1,4 +1,4 @@
-﻿using AP_Theme_5.Domain.Types;
+﻿using AP_Theme_5.Domain.Entities.Configuration_Data;
 
 namespace AP_Theme_5.Contracts.Types
 {

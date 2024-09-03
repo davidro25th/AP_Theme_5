@@ -11,13 +11,13 @@ using System.Threading.Tasks;
 
 namespace AP_Theme_5.Application.Worker.Commands.Worker
 {
-    public class WorkerCommandHandler :
+    public class UpdateWorkerCommandHandler :
         ICommandHandler<UpdateWorkerCommand>
     {
         private readonly IWorkerRepository _workerRepository;
         private readonly IUnitOfWork _unitOfWork;
 
-        public WorkerCommandHandler(IWorkerRepository workerRepository, IUnitOfWork unitOfWork)
+        public UpdateWorkerCommandHandler(IWorkerRepository workerRepository, IUnitOfWork unitOfWork)
         {
             _workerRepository = workerRepository;
             _unitOfWork = unitOfWork;

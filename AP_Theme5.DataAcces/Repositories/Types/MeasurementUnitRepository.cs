@@ -1,7 +1,7 @@
 ﻿using AP_Theme_5.DataAcces.Context;
 using AP_Theme_5.DataAcces.Repositories.Common;
 using AP_Theme_5.Contracts.Types;
-using AP_Theme_5.Domain.Types;
+using AP_Theme_5.Domain.Entities.Configuration_Data;
 using System;
 
 namespace AP_Theme_5.DataAcces.Repositories.Types

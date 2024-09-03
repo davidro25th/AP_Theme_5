@@ -4,9 +4,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using AP_Theme_5.Domain.Types;
+using AP_Theme_5.Domain.Entities.Configuration_Data;
 
 namespace AP_Theme_5.Application.MeasurementUnit.Query.GetMeasurementUnitByID
 {
-    public record GetMeasurementUnitByIDQuery(Guid Id) : IQuery<Domain.Types.MeasurementUnit?>;
+    public record GetMeasurementUnitByIDQuery(Guid Id) : IQuery<Domain.Entities.Configuration_Data.MeasurementUnit?>;
 }
