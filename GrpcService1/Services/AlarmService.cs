@@ -1,4 +1,5 @@
-﻿using AP_Theme_5.Contracts;
+﻿using AP_Theme_5.Application.Alarm.Commands.CreateAlarm;
+using AP_Theme_5.Contracts;
 using AP_Theme_5.Contracts.HistoricalData;
 using AP_Theme_5.GrpcProtos;
 using AutoMapper;
@@ -19,6 +20,21 @@ namespace GrpcService1.Services
         }
         public override Task<AlarmDTO> CreateAlarm(CreateAlarmRequest request, ServerCallContext context)
         {
+            var command = new CreateAlarmCommand(
+                new AP_Theme_5.Domain.ValueObjects.AlarmConfiguration(
+                    request.Alarmconfiguration.Outofrange,
+                    new AP_Theme_5.Domain.Entities.Configuration_Data.Variable( 
+                        request.Alarmconfiguration.Alarmvariable.Code,
+                        request.Alarmconfiguration.Alarmvariable.Name,
+                        new AP_Theme_5.Domain.Types.MeasurementUnit( 
+                            request.Alarmconfiguration.Alarmvariable.Measurementunit.Unitname,
+                            request.Alarmconfiguration.Alarmvariable.Measurementunit.Unittype
+                            )
+                        )
+                    )
+
+                );
+            var result = _mediator.Send(command).Result;
             return base.CreateAlarm(request, context);
         }
         public override Task<NullableAlarmDTO> GetAlarm(GetRequest request, ServerCallContext context)

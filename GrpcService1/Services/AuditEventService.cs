@@ -1,4 +1,5 @@
-﻿using AP_Theme_5.Contracts;
+﻿using AP_Theme_5.Application.AuditEvent.Commands.CreateAuditEvent;
+using AP_Theme_5.Contracts;
 using AP_Theme_5.Contracts.HistoricalData;
 using AP_Theme_5.GrpcProtos;
 using AutoMapper;
@@ -19,6 +20,11 @@ namespace GrpcService1.Services
         }
         public override Task<AuditEventDTO> CreateAuditEvent(CreateAuditEventRequest request, ServerCallContext context)
         {
+            var command = new CreateAuditEventCommand(
+                request.Action,
+                AP_Theme_5.Domain.Entities.Configuration_Data.Worker.Create( request.Worker.IdentityCard )              
+                );
+            var result = _mediator.Send(command).Result;
             return base.CreateAuditEvent(request, context);
         }
 

@@ -1,4 +1,5 @@
-﻿using AP_Theme_5.Contracts;
+﻿using AP_Theme_5.Application.Variable.Commands.CreateVariable;
+using AP_Theme_5.Contracts;
 using AP_Theme_5.Contracts.ConfigurationData;
 using AP_Theme_5.GrpcProtos;
 using AutoMapper;
@@ -19,6 +20,16 @@ namespace GrpcService1.Services
         }
         public override Task<VariableDTO> CreateVariable(CreateVariableRequest request, ServerCallContext context)
         {
+            var command = new CreateVariableCommand(
+                request.Name,
+                request.Code,
+                new AP_Theme_5.Domain.Types.MeasurementUnit( 
+                    request.Measurementunit.Unitname,
+                    request.Measurementunit.Unittype
+                    )
+                );
+            var result = _mediator.Send(command).Result;
+
             return base.CreateVariable(request, context);
         }
         public override Task<NullableVariableDTO> GetVariable(GetRequest request, ServerCallContext context)

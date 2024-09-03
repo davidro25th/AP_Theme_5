@@ -1,4 +1,5 @@
-﻿using AP_Theme_5.Contracts;
+﻿using AP_Theme_5.Application.MeasurementUnit.Commands.CreateMeasurementUnit;
+using AP_Theme_5.Contracts;
 using AP_Theme_5.Contracts.Types;
 using AP_Theme_5.DataAcces.Repositories.Types;
 using AP_Theme_5.GrpcProtos;
@@ -20,7 +21,14 @@ namespace GrpcService1.Services
         }
         public override Task<MeasurementUnitDTO> CreateMeasurementUnit(CreateMeasurementUnitRequest request, ServerCallContext context)
         {
+            var command = new CreateMeasurementUnitCommand(
+                request.Unitname,
+                request.Unittype
+                );
+          var result = _mediator.Send(command).Result;
+
             return base.CreateMeasurementUnit(request, context);
+
         }
         public override Task<NullableMeasurementUnitDTO> GetMeasurementUnit(GetRequest request, ServerCallContext context)
         {

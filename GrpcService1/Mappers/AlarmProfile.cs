@@ -18,6 +18,7 @@ namespace GrpcService1.Mappers
                 .ForMember(t => t.Id, o => o.MapFrom(s => new Guid(s.Id)))
                 .ForMember(t => t.IncidencenceDate, o => o.MapFrom(s => s.Incidencedate))
                 .ForMember(t => t.RecoveryDate, o => o.MapFrom(s => s.Recoverydate))
+
                 .ForMember(t => t.AlarmConfiguration, o => o.MapFrom(s => s.Alarmconfiguration));
         }
     }
