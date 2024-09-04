@@ -15,6 +15,9 @@ namespace GrpcService1.Services
 {
     public class AuditEventService :AuditEvent.AuditEventBase
     {
+
+        public AuditEventService() { }
+
         private readonly IMediator _mediator;
         private readonly IMapper _mapper;
 
@@ -25,18 +28,6 @@ namespace GrpcService1.Services
         }
 
         private readonly IAuditEventRepository _auditEventRepository;
-        private readonly IUnitOfWork _unitOfWork;
-        public AuditEventService(IAuditEventRepository auditEventRepository, IUnitOfWork unitOfWork)
-        {
-            _auditEventRepository = auditEventRepository;
-            _unitOfWork = unitOfWork;
-        }
-
-        public AuditEventService(IAuditEventRepository auditEventRepository, IMapper mapper)
-        {
-            _auditEventRepository = auditEventRepository;
-            _mapper = mapper;
-        }
 
 
         public override Task<AuditEventDTO> CreateAuditEvent(CreateAuditEventRequest request, ServerCallContext context)

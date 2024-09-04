@@ -15,6 +15,9 @@ namespace GrpcService1.Services
 {
     public class VariableService : Variable.VariableBase
     {
+
+        public VariableService() { }
+
         private readonly IMediator _mediator;
         private readonly IMapper _mapper;
 
@@ -25,18 +28,7 @@ namespace GrpcService1.Services
         }
 
         private readonly IVariableRepository _variableRepository;
-        private readonly IUnitOfWork _unitOfWork;
-        public VariableService(IVariableRepository variableRepository, IUnitOfWork unitOfWork)
-        {
-            _variableRepository = variableRepository;
-            _unitOfWork = unitOfWork;
-        }
 
-        public VariableService(IVariableRepository variableRepository, IMapper mapper)
-        {
-            _variableRepository = variableRepository;
-            _mapper = mapper;
-        }
 
         public override Task<VariableDTO> CreateVariable(CreateVariableRequest request, ServerCallContext context)
         {

@@ -16,6 +16,7 @@ namespace GrpcService1.Services
 {
     public class MeasurementUnitService : MeasurementUnit.MeasurementUnitBase
     {
+        public MeasurementUnitService() { }
         
 
         private readonly IMediator _mediator;
@@ -28,18 +29,6 @@ namespace GrpcService1.Services
         }
 
         private readonly IMeasurementUnitRepository _measurementUnitRepository;
-        private readonly IUnitOfWork _unitOfWork;
-        public MeasurementUnitService(IMeasurementUnitRepository measurementUnitRepository, IUnitOfWork unitOfWork)
-        {
-            _measurementUnitRepository = measurementUnitRepository;
-            _unitOfWork = unitOfWork;
-        }
-
-        public MeasurementUnitService( IMeasurementUnitRepository measurementUnitRepository, IMapper mapper)
-        {
-            _measurementUnitRepository = measurementUnitRepository;
-            _mapper = mapper;
-        }
 
         public override Task<MeasurementUnitDTO> CreateMeasurementUnit(CreateMeasurementUnitRequest request, ServerCallContext context)
         {

@@ -15,6 +15,9 @@ namespace GrpcService1.Services
 {
     public class AlarmService : Alarm.AlarmBase
     {
+
+        public AlarmService() { }
+
         private readonly IMediator _mediator;
         private readonly IMapper _mapper;
 
@@ -25,18 +28,7 @@ namespace GrpcService1.Services
         }
 
         private readonly IAlarmRepository _alarmRepository;
-        private readonly IUnitOfWork _unitOfWork;
-        public AlarmService(IAlarmRepository alarmRepository, IUnitOfWork unitOfWork)
-        {
-            _alarmRepository = alarmRepository;
-            _unitOfWork = unitOfWork;
-        }
 
-        public AlarmService(IAlarmRepository alarmRepository, IMapper mapper)
-        {
-            _alarmRepository = alarmRepository;
-            _mapper = mapper;
-        }
 
         public override Task<AlarmDTO> CreateAlarm(CreateAlarmRequest request, ServerCallContext context)
         {

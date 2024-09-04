@@ -15,7 +15,7 @@ namespace AP_Theme_5.ConsoleApp
             Console.WriteLine("Creating channel and client");
             var httpHandler = new HttpClientHandler();
             httpHandler.ServerCertificateCustomValidationCallback = HttpClientHandler.DangerousAcceptAnyServerCertificateValidator;
-            var channel = GrpcChannel.ForAddress("http://localhost:5051", new GrpcChannelOptions { HttpHandler = httpHandler });
+            var channel = GrpcChannel.ForAddress("http://localhost:5001", new GrpcChannelOptions { HttpHandler = httpHandler });
             if (channel is null)
             {
                 Console.WriteLine("Cannot connect");

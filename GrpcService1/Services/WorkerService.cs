@@ -15,6 +15,9 @@ namespace GrpcService1.Services
 {
     public class WorkerService : Worker.WorkerBase
     {
+
+        public WorkerService() { }
+
         private readonly IMediator _mediator;
         private readonly IMapper _mapper;
 
@@ -25,17 +28,7 @@ namespace GrpcService1.Services
         }
 
         private readonly IWorkerRepository _workerRepository;
-        private readonly IUnitOfWork _unitOfWork;
-        public WorkerService(IWorkerRepository workerRepository, IUnitOfWork unitOfWork)
-        {
-            _workerRepository = workerRepository;
-            _unitOfWork = unitOfWork;
-        }
-        public WorkerService(IWorkerRepository workerRepository, IMapper mapper)
-        {
-            _workerRepository = workerRepository;
-            _mapper = mapper;
-        }
+       
         public override Task<WorkerDTO> CreateWorker(CreateWorkerRequest request, ServerCallContext context)
         {
             var command = AP_Theme_5.Domain.Entities.Configuration_Data.Worker.Create(request.IdentityCard);

@@ -11,11 +11,7 @@ namespace GrpcService1.Services
     {
         private readonly IAlarmRepository _alarmConfigurationRepository;
         private readonly IUnitOfWork _unitOfWork;
-        public AlarmConfigurationService(IAlarmRepository alarmConfigurationRepository, IUnitOfWork unitOfWork)
-        {
-            _alarmConfigurationRepository = alarmConfigurationRepository;
-            _unitOfWork = unitOfWork;
-        }        
+     
 
         public override Task<AlarmConfigurationDTO> CreateAlarmConfiguration(CreateAlarmConfigurationRequest request, ServerCallContext context)
         {
