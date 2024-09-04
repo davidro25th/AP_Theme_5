@@ -26,11 +26,18 @@ namespace GrpcService1.Services
 
         private readonly IAuditEventRepository _auditEventRepository;
         private readonly IUnitOfWork _unitOfWork;
-        public AuditEventService(IAuditEventRepository auditEventConfigurationRepository, IUnitOfWork unitOfWork)
+        public AuditEventService(IAuditEventRepository auditEventRepository, IUnitOfWork unitOfWork)
         {
-            _auditEventRepository = _auditEventRepository;
+            _auditEventRepository = auditEventRepository;
             _unitOfWork = unitOfWork;
         }
+
+        public AuditEventService(IAuditEventRepository auditEventRepository, IMapper mapper)
+        {
+            _auditEventRepository = auditEventRepository;
+            _mapper = mapper;
+        }
+
 
         public override Task<AuditEventDTO> CreateAuditEvent(CreateAuditEventRequest request, ServerCallContext context)
         {

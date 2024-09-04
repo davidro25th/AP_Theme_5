@@ -26,10 +26,15 @@ namespace GrpcService1.Services
 
         private readonly IWorkerRepository _workerRepository;
         private readonly IUnitOfWork _unitOfWork;
-        public WorkerService(IWorkerRepository workerConfigurationRepository, IUnitOfWork unitOfWork)
+        public WorkerService(IWorkerRepository workerRepository, IUnitOfWork unitOfWork)
         {
-            _workerRepository = _workerRepository;
+            _workerRepository = workerRepository;
             _unitOfWork = unitOfWork;
+        }
+        public WorkerService(IWorkerRepository workerRepository, IMapper mapper)
+        {
+            _workerRepository = workerRepository;
+            _mapper = mapper;
         }
         public override Task<WorkerDTO> CreateWorker(CreateWorkerRequest request, ServerCallContext context)
         {
