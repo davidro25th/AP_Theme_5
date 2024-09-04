@@ -11,12 +11,13 @@ using AutoMapper;
 using Google.Protobuf.WellKnownTypes;
 using Grpc.Core;
 using MediatR;
+using Microsoft.Extensions.Logging;
 
 namespace GrpcService1.Services
 {
     public class MeasurementUnitService : MeasurementUnit.MeasurementUnitBase
     {
-        public MeasurementUnitService() { }
+        
         
 
         private readonly IMediator _mediator;
@@ -32,14 +33,16 @@ namespace GrpcService1.Services
 
         public override Task<MeasurementUnitDTO> CreateMeasurementUnit(CreateMeasurementUnitRequest request, ServerCallContext context)
         {
-            var command = new CreateMeasurementUnitCommand(
-                request.Unitname,
-                request.Unittype
-                );
-            var result = _mediator.Send(command).Result;
+            
+            
+                // Your business logic here
+                var command = new CreateMeasurementUnitCommand(
+               request.Unitname,
+               request.Unittype
+               );
+                var result = _mediator.Send(command).Result;
 
             return Task.FromResult(_mapper.Map<MeasurementUnitDTO>(result));
-
         }
         public override Task<NullableMeasurementUnitDTO> GetMeasurementUnit(GetRequest request, ServerCallContext context)
         {

@@ -7,7 +7,7 @@ namespace GrpcService1.Mappers
 {
     public class MeasurementUnitProfile : Profile
     {
-        public MeasurementUnitProfile(IMediator mediator, IMapper mapper)
+        public MeasurementUnitProfile()
         {
             CreateMap<AP_Theme_5.Domain.Entities.Configuration_Data.MeasurementUnit, AP_Theme_5.GrpcProtos.MeasurementUnitDTO>()
                 .ForMember(t => t.Id, o => o.MapFrom(s => s.Id.ToString()))

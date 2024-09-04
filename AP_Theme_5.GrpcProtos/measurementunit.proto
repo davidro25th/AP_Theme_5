@@ -35,6 +35,6 @@ message NullableMeasurementUnitDTO{
 }
 
 message CreateMeasurementUnitRequest{
-	string unitname = 1;
-	string unittype =2;
+	string Unitname = 1;
+	string Unittype =2;
 }

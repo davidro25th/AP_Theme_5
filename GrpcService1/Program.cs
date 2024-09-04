@@ -23,6 +23,12 @@ public class GrpcProgram
         // For instructions on how to configure Kestrel and gRPC clients on macOS, visit https://go.microsoft.com/fwlink/?linkid=2099682
 
         // Add services to the container.
+        builder.Services.AddGrpc(opttions =>
+        {
+            opttions.EnableDetailedErrors = true;
+            opttions.MaxReceiveMessageSize = 8 * 1024 * 1024;
+            opttions.MaxSendMessageSize = 20 * 1024 * 1024;
+        });
         builder.Services.AddGrpc();
         builder.Services.AddAutoMapper( typeof(GrpcProgram).Assembly);
         builder.Services.AddSingleton("Data Source=Data.sqlite");

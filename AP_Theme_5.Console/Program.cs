@@ -1,5 +1,6 @@
 ﻿using AP_Theme_5.GrpcProtos;
 using Grpc.Net.Client;
+using AP_Theme_5.Domain.Entities.Configuration_Data;
 
 
 namespace AP_Theme_5.ConsoleApp
