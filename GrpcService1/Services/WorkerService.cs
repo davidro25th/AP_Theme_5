@@ -30,7 +30,7 @@ namespace GrpcService1.Services
        
         public override Task<WorkerDTO> CreateWorker(CreateWorkerRequest request, ServerCallContext context)
         {
-            var command = AP_Theme_5.Domain.Entities.Configuration_Data.Worker.Create(request.IdentityCard);
+            var command = new CreateWorkerCommand(request.IdentityCard);
             var result = _mediator.Send(command).Result;
 
             return Task.FromResult(_mapper.Map<WorkerDTO>(result));
