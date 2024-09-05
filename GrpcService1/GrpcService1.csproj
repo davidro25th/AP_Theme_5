@@ -7,6 +7,16 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Mappers\AlarmProfile.cs" />
+    <Compile Remove="Services\AlarmService.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Mappers\AlarmProfile.cs" />
+    <None Include="Services\AlarmService.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Protobuf Include="Protos\greet.proto" GrpcServices="Server" />
   </ItemGroup>
 
