@@ -35,9 +35,10 @@ public class GrpcProgram
             AutoRegisterRequestProcessors = true
         }
         .RegisterServicesFromAssemblies(typeof(AP_Theme_5.Application.AssemblyReference).Assembly));
+
+
         builder.Services.AddSingleton("Data Source=Data.sqlite");
         builder.Services.AddScoped<ApplicationContext>();
-
         builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
         builder.Services.AddScoped<IMeasurementUnitRepository, MeasurementUnitRepository>();
         builder.Services.AddScoped<IVariableRepository, VariableRepository>();

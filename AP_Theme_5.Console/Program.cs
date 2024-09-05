@@ -132,8 +132,8 @@ namespace AP_Theme_5.ConsoleApp
             {
                 Console.WriteLine($"Eliminación exitosa.");
             }
-
-           /* Console.WriteLine("Presione una tecla para crear una configuracion de alarma");
+/*
+            Console.WriteLine("Presione una tecla para crear una configuracion de alarma");
             Console.ReadKey();
             var createResponse2 = client2.CreateAlarmConfiguration(new CreateAlarmConfigurationRequest() { Alarmvariable = createResponse1, Outofrange = 25 });
             if (createResponse2 is null)
