@@ -57,5 +57,8 @@ internal class Program
         Variable Var1 = new Variable("Temperatura de MU","0001", MU1);
         _variableRepository.AddVariable(Var1);
         _unitOfWork.SaveChanges();
+        Variable Var2;
+        Var2 = _variableRepository.GetVariableById(Var1.Id);
+        _unitOfWork.SaveChanges();
     }
 }
