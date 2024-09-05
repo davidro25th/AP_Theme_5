@@ -99,7 +99,7 @@ namespace AP_Theme_5.ConsoleApp
 
             Console.WriteLine("Presione una tecla para obtener la variable");
             Console.ReadKey();
-            var getResponse1 = client1.GetVariable(new GetRequest() { Id = createResponse.Id });
+            var getResponse1 = client1.GetVariable(new GetRequest() { Id = createResponse1.Id });
             if (getResponse1.Variable is null)
             {
                 Console.WriteLine("Cannot get Variable");
