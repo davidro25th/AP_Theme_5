@@ -27,8 +27,8 @@ namespace AP_Theme_5.ConsoleApp
 
             var client0 = new AP_Theme_5.GrpcProtos.MeasurementUnit.MeasurementUnitClient(channel);
             var client1 = new AP_Theme_5.GrpcProtos.Variable.VariableClient(channel);
-            var client2 = new AP_Theme_5.GrpcProtos.AlarmConfiguration.AlarmConfigurationClient(channel);
-            var client3 = new AP_Theme_5.GrpcProtos.Alarm.AlarmClient(channel);
+            //var client2 = new AP_Theme_5.GrpcProtos.AlarmConfiguration.AlarmConfigurationClient(channel);
+           // var client3 = new AP_Theme_5.GrpcProtos.Alarm.AlarmClient(channel);
             var client4 = new AP_Theme_5.GrpcProtos.Worker.WorkerClient(channel);
             var client5 = new AP_Theme_5.GrpcProtos.AuditEvent.AuditEventClient(channel);
 
@@ -133,7 +133,7 @@ namespace AP_Theme_5.ConsoleApp
                 Console.WriteLine($"Eliminación exitosa.");
             }
 
-            Console.WriteLine("Presione una tecla para crear una configuracion de alarma");
+           /* Console.WriteLine("Presione una tecla para crear una configuracion de alarma");
             Console.ReadKey();
             var createResponse2 = client2.CreateAlarmConfiguration(new CreateAlarmConfigurationRequest() { Alarmvariable = createResponse1, Outofrange = 25 });
             if (createResponse2 is null)
@@ -233,7 +233,7 @@ namespace AP_Theme_5.ConsoleApp
                 Console.WriteLine($"Eliminación exitosa.");
             }
 
-            Console.WriteLine("Presione una tecla para crear un trabajador");
+*/            Console.WriteLine("Presione una tecla para crear un trabajador");
             Console.ReadKey();
             var createResponse4 = client4.CreateWorker(new CreateWorkerRequest() { IdentityCard = "01101464003" });
             if (createResponse4 is null)

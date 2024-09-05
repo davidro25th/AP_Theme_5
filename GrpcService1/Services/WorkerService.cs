@@ -16,7 +16,6 @@ namespace GrpcService1.Services
     public class WorkerService : Worker.WorkerBase
     {
 
-        public WorkerService() { }
 
         private readonly IMediator _mediator;
         private readonly IMapper _mapper;

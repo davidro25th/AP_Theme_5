@@ -16,7 +16,6 @@ namespace GrpcService1.Services
     public class AuditEventService :AuditEvent.AuditEventBase
     {
 
-        public AuditEventService() { }
 
         private readonly IMediator _mediator;
         private readonly IMapper _mapper;

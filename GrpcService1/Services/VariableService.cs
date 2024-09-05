@@ -16,7 +16,6 @@ namespace GrpcService1.Services
     public class VariableService : Variable.VariableBase
     {
 
-        public VariableService() { }
 
         private readonly IMediator _mediator;
         private readonly IMapper _mapper;

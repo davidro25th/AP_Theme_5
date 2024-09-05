@@ -16,10 +16,7 @@ using Microsoft.Extensions.Logging;
 namespace GrpcService1.Services
 {
     public class MeasurementUnitService : MeasurementUnit.MeasurementUnitBase
-    {
-        
-        
-
+    {               
         private readonly IMediator _mediator;
         private readonly IMapper _mapper;
 
@@ -28,14 +25,9 @@ namespace GrpcService1.Services
             _mediator = mediator;
             _mapper = mapper;
         }
-
-        private readonly IMeasurementUnitRepository _measurementUnitRepository;
-
-        public override Task<MeasurementUnitDTO> CreateMeasurementUnit(CreateMeasurementUnitRequest request, ServerCallContext context)
+       public override Task<MeasurementUnitDTO> CreateMeasurementUnit(CreateMeasurementUnitRequest request, ServerCallContext context)
         {
-            
-            
-                // Your business logic here
+             // Your business logic here
                 var command = new CreateMeasurementUnitCommand(
                request.Unitname,
                request.Unittype

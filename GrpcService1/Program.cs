@@ -9,7 +9,6 @@ using AP_Theme_5.DataAcces.Repositories.HistoricalData;
 using AP_Theme_5.DataAcces.Repositories.Types;
 using AutoMapper;
 using GrpcService1.Services;
-using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 using System.Reflection.Metadata;
 
@@ -31,15 +30,13 @@ public class GrpcProgram
         });
         builder.Services.AddGrpc();
         builder.Services.AddAutoMapper( typeof(GrpcProgram).Assembly);
-        builder.Services.AddSingleton("Data Source=Data.sqlite");
-        builder.Services.AddScoped<ApplicationContext>();
-
         builder.Services.AddMediatR(new MediatRServiceConfiguration()
         {
             AutoRegisterRequestProcessors = true
         }
-        .RegisterServicesFromAssemblies(typeof(AssemblyReference).Assembly));
-
+        .RegisterServicesFromAssemblies(typeof(AP_Theme_5.Application.AssemblyReference).Assembly));
+        builder.Services.AddSingleton("Data Source=Data.sqlite");
+        builder.Services.AddScoped<ApplicationContext>();
 
         builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
         builder.Services.AddScoped<IMeasurementUnitRepository, MeasurementUnitRepository>();
