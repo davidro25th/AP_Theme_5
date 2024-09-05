@@ -1,6 +1,8 @@
 ﻿using AP_Theme_5.GrpcProtos;
 using Grpc.Net.Client;
 using AP_Theme_5.Domain.Entities.Configuration_Data;
+using Google.Protobuf.WellKnownTypes;
+using System;
 
 
 namespace AP_Theme_5.ConsoleApp
@@ -227,14 +229,17 @@ namespace AP_Theme_5.ConsoleApp
 
             Console.WriteLine("Presione una tecla para modificar la alarma");
             Console.ReadKey();
-            createResponse3.Alarmconfiguration.OutOfRange = 10;
+            DateTime dateTime = DateTime.Now;
+            createResponse3.Recoverydate = Timestamp.FromDateTime(dateTime.ToUniversalTime());
             //client2.UpdateAlarmConfiguration(createResponse2);
 
             var updatedGetResponse3 = client3.GetAlarm(new GetRequest() { Id = createResponse3.Id });
-            if (updatedGetResponse3 is not null && updatedGetResponse3.KindCase == NullableAlarmDTO.KindOneofCase.Alarm && updatedGetResponse3.Alarm.Alarmconfiguration.OutOfRange == 10)
+            if (updatedGetResponse3 is not null && updatedGetResponse3.KindCase == NullableAlarmDTO.KindOneofCase.Alarm && updatedGetResponse3.Alarm.Recoverydate == Timestamp.FromDateTime(dateTime.ToUniversalTime()))
             {
                 Console.WriteLine($"Modificación exitosa.");
             }
+            else 
+                Console.WriteLine($"Modificacion Fallida");
 
             Console.WriteLine("Presione una tecla para eliminar la alarma");
             Console.ReadKey();
