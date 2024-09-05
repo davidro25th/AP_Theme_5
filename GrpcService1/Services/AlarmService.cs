@@ -33,20 +33,20 @@ namespace GrpcService1.Services
         {
             var command = new CreateAlarmCommand(
                 new AP_Theme_5.Domain.ValueObjects.AlarmConfiguration(
-                    request.Alarmconfiguration.Outofrange,
-                    new AP_Theme_5.Domain.Entities.Configuration_Data.Variable( 
-                        request.Alarmconfiguration.Alarmvariable.Code,
-                        request.Alarmconfiguration.Alarmvariable.Name,
-                        new AP_Theme_5.Domain.Entities.Configuration_Data.MeasurementUnit( 
-                            request.Alarmconfiguration.Alarmvariable.Measurementunit.Unitname,
-                            request.Alarmconfiguration.Alarmvariable.Measurementunit.Unittype
+                    request.Alarmconfiguration.OutOfRange,
+                    new AP_Theme_5.Domain.Entities.Configuration_Data.Variable(
+                        request.Alarmconfiguration.VariableCode,
+                        request.Alarmconfiguration.VariableName,
+                        new AP_Theme_5.Domain.Entities.Configuration_Data.MeasurementUnit(
+                            request.Alarmconfiguration.Muunitname,
+                            request.Alarmconfiguration.Muunittype
                             )
                         )
                     )
 
                 );
             var result = _mediator.Send(command).Result;
-            return base.CreateAlarm(request, context);
+            return Task.FromResult(_mapper.Map<AlarmDTO>(result));
         }
         public override Task<NullableAlarmDTO> GetAlarm(GetRequest request, ServerCallContext context)
         {
@@ -65,10 +65,10 @@ namespace GrpcService1.Services
             var result = _mediator.Send(query).Result;
 
             // Convirtiendo de lista de alarmas al mensaje de lista de DTOs de alarmas.
-            var motorcyclesDTOs = new Alarms();
-            motorcyclesDTOs.Items.AddRange(result.Select(m => _mapper.Map<AlarmDTO>(m)));
+            var AlarmsDTOs = new Alarms();
+            AlarmsDTOs.Items.AddRange(result.Select(m => _mapper.Map<AlarmDTO>(m)));
 
-            return Task.FromResult(motorcyclesDTOs);
+            return Task.FromResult(AlarmsDTOs);
         }
         public override Task<Empty> UpdateAlarm(AlarmDTO request, ServerCallContext context)
         {
@@ -85,6 +85,6 @@ namespace GrpcService1.Services
             _mediator.Send(command);
 
             return Task.FromResult(new Empty());
-        }   
+        }
     }
 }

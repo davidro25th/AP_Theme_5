@@ -17,3 +17,15 @@ enum Priority{
 	Medium = 1;
 	High = 2;
 }
+
+message AlarmConfigurattion{
+	Priority priority = 1;
+	double outOfRange = 2;
+	string variableID = 3;
+	string variableName = 4;
+	string variableCode = 5;
+	string muid = 6;
+	string muunittype = 7;
+	string muunitname = 8;
+
+}

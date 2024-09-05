@@ -27,8 +27,8 @@ namespace AP_Theme_5.ConsoleApp
 
             var client0 = new AP_Theme_5.GrpcProtos.MeasurementUnit.MeasurementUnitClient(channel);
             var client1 = new AP_Theme_5.GrpcProtos.Variable.VariableClient(channel);
-            //var client2 = new AP_Theme_5.GrpcProtos.AlarmConfiguration.AlarmConfigurationClient(channel);
-           // var client3 = new AP_Theme_5.GrpcProtos.Alarm.AlarmClient(channel);
+           // var client2 = new AP_Theme_5.GrpcProtos.AlarmConfiguration.AlarmConfigurationClient(channel);
+            var client3 = new AP_Theme_5.GrpcProtos.Alarm.AlarmClient(channel);
             var client4 = new AP_Theme_5.GrpcProtos.Worker.WorkerClient(channel);
             var client5 = new AP_Theme_5.GrpcProtos.AuditEvent.AuditEventClient(channel);
 
@@ -132,8 +132,8 @@ namespace AP_Theme_5.ConsoleApp
             {
                 Console.WriteLine($"Eliminación exitosa.");
             }
-/*
-            Console.WriteLine("Presione una tecla para crear una configuracion de alarma");
+
+            /*Console.WriteLine("Presione una tecla para crear una configuracion de alarma");
             Console.ReadKey();
             var createResponse2 = client2.CreateAlarmConfiguration(new CreateAlarmConfigurationRequest() { Alarmvariable = createResponse1, Outofrange = 25 });
             if (createResponse2 is null)
@@ -181,11 +181,24 @@ namespace AP_Theme_5.ConsoleApp
             if (deletedGetResponse2 is null || deletedGetResponse2.KindCase != NullableAlarmConfigurationDTO.KindOneofCase.Alarmconfiguration)
             {
                 Console.WriteLine($"Eliminación exitosa.");
-            }
-
+            }*/
+          
             Console.WriteLine("Presione una tecla para crear una alarma");
             Console.ReadKey();
-            var createResponse3 = client3.CreateAlarm(new CreateAlarmRequest() { Alarmconfiguration = createResponse2 });
+            var createResponse3 = client3.CreateAlarm(new CreateAlarmRequest() {
+                Alarmconfiguration = new AlarmConfigurattion()
+                {
+                    Priority = Priority.High,
+                    OutOfRange = 3,
+                    VariableID = createResponse1.Id,
+                    VariableName = createResponse1.Name,
+                    VariableCode = createResponse1.Code,
+                    Muid = createResponse.Id,
+                    Muunitname = createResponse.Unitname,
+                    Muunittype = createResponse.Unittype,
+                }                
+                
+            });
             if (createResponse3 is null)
             {
                 Console.WriteLine("Cannot create Alarm");
@@ -214,11 +227,11 @@ namespace AP_Theme_5.ConsoleApp
 
             Console.WriteLine("Presione una tecla para modificar la alarma");
             Console.ReadKey();
-            createResponse3.Alarmconfiguration.Outofrange = 10;
-            client2.UpdateAlarmConfiguration(createResponse2);
+            createResponse3.Alarmconfiguration.OutOfRange = 10;
+            //client2.UpdateAlarmConfiguration(createResponse2);
 
             var updatedGetResponse3 = client3.GetAlarm(new GetRequest() { Id = createResponse3.Id });
-            if (updatedGetResponse3 is not null && updatedGetResponse3.KindCase == NullableAlarmDTO.KindOneofCase.Alarm && updatedGetResponse3.Alarm.Alarmconfiguration.Outofrange == 10)
+            if (updatedGetResponse3 is not null && updatedGetResponse3.KindCase == NullableAlarmDTO.KindOneofCase.Alarm && updatedGetResponse3.Alarm.Alarmconfiguration.OutOfRange == 10)
             {
                 Console.WriteLine($"Modificación exitosa.");
             }
@@ -233,7 +246,7 @@ namespace AP_Theme_5.ConsoleApp
                 Console.WriteLine($"Eliminación exitosa.");
             }
 
-*/            Console.WriteLine("Presione una tecla para crear un trabajador");
+            Console.WriteLine("Presione una tecla para crear un trabajador");
             Console.ReadKey();
             var createResponse4 = client4.CreateWorker(new CreateWorkerRequest() { IdentityCard = "01101464003" });
             if (createResponse4 is null)

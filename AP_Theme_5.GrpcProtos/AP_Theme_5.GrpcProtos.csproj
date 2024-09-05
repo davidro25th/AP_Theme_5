@@ -12,7 +12,6 @@
 
 	<ItemGroup>
 	  <None Remove="alarm.proto" />
-	  <None Remove="alarmconfiguration.proto" />
 	  <None Remove="auditevent.proto" />
 	  <None Remove="measurementunit.proto" />
 	  <None Remove="variable.proto" />

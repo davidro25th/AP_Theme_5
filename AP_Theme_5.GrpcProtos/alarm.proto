@@ -8,7 +8,6 @@ import "google/protobuf/wrappers.proto";
 import "google/protobuf/empty.proto";
 import "google/protobuf/struct.proto";
 import "google/protobuf/timestamp.proto";
-import "alarmconfiguration.proto";
 import "common.proto";
 
 service Alarm{
@@ -23,7 +22,7 @@ message AlarmDTO{
 	string id = 1;
 	google.protobuf.Timestamp incidencedate = 2;
 	google.protobuf.Timestamp recoverydate = 3;
-	AlarmConfigurationDTO alarmconfiguration = 4;
+	AlarmConfigurattion alarmconfiguration = 4;
 }
 
 message Alarms{
@@ -38,5 +37,5 @@ message NullableAlarmDTO{
 }
 
 message CreateAlarmRequest{
-	AlarmConfigurationDTO alarmconfiguration = 1;
+	AlarmConfigurattion alarmconfiguration = 1;
 }
