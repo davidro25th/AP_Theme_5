@@ -39,7 +39,7 @@ namespace AP_Theme_5.Domain.Entities.Configuration_Data
         /// <summary>
         /// Constructor de la clase Worker
         /// </summary>
-        private Worker(Guid ID, string identityCard, string? firstName, string? lastName , string? phoneNumber)
+        private Worker(Guid ID, string identityCard/*, string? firstName, string? lastName , string? phoneNumber*/)
         {
             Id = ID;
             IdentityCard = identityCard;
@@ -59,7 +59,7 @@ namespace AP_Theme_5.Domain.Entities.Configuration_Data
             {
                 return null;
             }
-            return new Worker(Guid.NewGuid(), identityCard, null, null, null);
+            return new Worker(Guid.NewGuid(), identityCard/*, null, null, null*/);
         }
         /// <summary>
         /// Metodo para validar el formato del Numero de telefono
